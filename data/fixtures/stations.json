@@ -1,0 +1,20 @@
+[
+  { "code": "NDLS", "name": "New Delhi", "city": "New Delhi", "state": "Delhi", "zone": "NR", "platforms": 16, "lat": 28.6424, "lng": 77.2195 },
+  { "code": "MMCT", "name": "Mumbai Central", "city": "Mumbai", "state": "Maharashtra", "zone": "WR", "platforms": 8, "lat": 18.9696, "lng": 72.8193 },
+  { "code": "CSMT", "name": "Chhatrapati Shivaji Maharaj Terminus", "city": "Mumbai", "state": "Maharashtra", "zone": "CR", "platforms": 18, "lat": 18.9400, "lng": 72.8354 },
+  { "code": "HWH", "name": "Howrah Junction", "city": "Kolkata", "state": "West Bengal", "zone": "ER", "platforms": 23, "lat": 22.5830, "lng": 88.3426 },
+  { "code": "MAS", "name": "MGR Chennai Central", "city": "Chennai", "state": "Tamil Nadu", "zone": "SR", "platforms": 17, "lat": 13.0827, "lng": 80.2707 },
+  { "code": "SBC", "name": "KSR Bengaluru City", "city": "Bengaluru", "state": "Karnataka", "zone": "SWR", "platforms": 10, "lat": 12.9784, "lng": 77.5682 },
+  { "code": "CNB", "name": "Kanpur Central", "city": "Kanpur", "state": "Uttar Pradesh", "zone": "NCR", "platforms": 10, "lat": 26.4537, "lng": 80.3512 },
+  { "code": "PRYJ", "name": "Prayagraj Junction", "city": "Prayagraj", "state": "Uttar Pradesh", "zone": "NCR", "platforms": 10, "lat": 25.4358, "lng": 81.8463 },
+  { "code": "BSB", "name": "Varanasi Junction", "city": "Varanasi", "state": "Uttar Pradesh", "zone": "NR", "platforms": 9, "lat": 25.3216, "lng": 82.9873 },
+  { "code": "BPL", "name": "Bhopal Junction", "city": "Bhopal", "state": "Madhya Pradesh", "zone": "WCR", "platforms": 6, "lat": 23.2599, "lng": 77.4126 },
+  { "code": "RKMP", "name": "Rani Kamlapati", "city": "Bhopal", "state": "Madhya Pradesh", "zone": "WCR", "platforms": 5, "lat": 23.2201, "lng": 77.4428 },
+  { "code": "AGC", "name": "Agra Cantt", "city": "Agra", "state": "Uttar Pradesh", "zone": "NCR", "platforms": 6, "lat": 27.1585, "lng": 77.9942 },
+  { "code": "KOTA", "name": "Kota Junction", "city": "Kota", "state": "Rajasthan", "zone": "WCR", "platforms": 5, "lat": 25.1800, "lng": 75.8300 },
+  { "code": "RTM", "name": "Ratlam Junction", "city": "Ratlam", "state": "Madhya Pradesh", "zone": "WR", "platforms": 7, "lat": 23.3441, "lng": 75.0357 },
+  { "code": "BRC", "name": "Vadodara Junction", "city": "Vadodara", "state": "Gujarat", "zone": "WR", "platforms": 7, "lat": 22.3107, "lng": 73.1812 },
+  { "code": "ST", "name": "Surat", "city": "Surat", "state": "Gujarat", "zone": "WR", "platforms": 4, "lat": 21.2049, "lng": 72.8406 },
+  { "code": "PNBE", "name": "Patna Junction", "city": "Patna", "state": "Bihar", "zone": "ECR", "platforms": 10, "lat": 25.6025, "lng": 85.1376 },
+  { "code": "ADI", "name": "Ahmedabad Junction", "city": "Ahmedabad", "state": "Gujarat", "zone": "WR", "platforms": 12, "lat": 23.0225, "lng": 72.5714 }
+]

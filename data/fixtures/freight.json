@@ -1,0 +1,38 @@
+[
+  {
+    "rakeId": "WDFC-BOXN-4081",
+    "commodity": "Thermal Coal",
+    "corridor": "Western Dedicated Freight Corridor (WDFC)",
+    "origin": "Mundra Port (MDRA)",
+    "destination": "Dadri Thermal Power (DER)",
+    "wagons": 58,
+    "speedKmph": 85,
+    "currentLocation": "Palanpur Jn Bypass",
+    "grossWeightTons": 4820,
+    "status": "In Transit - Priority Path"
+  },
+  {
+    "rakeId": "EDFC-BLCA-9022",
+    "commodity": "Double Stack Containers",
+    "corridor": "Eastern Dedicated Freight Corridor (EDFC)",
+    "origin": "JNPT Port Nhava Sheva",
+    "destination": "ICD Dadri Multimodal Logistics Hub",
+    "wagons": 45,
+    "speedKmph": 92,
+    "currentLocation": "New Khurja Junction",
+    "grossWeightTons": 3600,
+    "status": "In Transit - Automated Signalling Block"
+  },
+  {
+    "rakeId": "CONCOR-BTPN-1104",
+    "commodity": "Petroleum & Lubricants (POL)",
+    "corridor": "Golden Quadrilateral Freight Grid",
+    "origin": "Koyali Refinery (Vadodara)",
+    "destination": "Bijwasan Oil Depot (Delhi)",
+    "wagons": 50,
+    "speedKmph": 72,
+    "currentLocation": "Kota Division",
+    "grossWeightTons": 4200,
+    "status": "Green Wave Clearance"
+  }
+]

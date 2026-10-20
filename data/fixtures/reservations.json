@@ -1,0 +1,47 @@
+{
+  "pnrs": {
+    "8421928374": {
+      "pnr": "8421928374",
+      "trainNumber": "12951",
+      "trainName": "Mumbai Tejas Rajdhani",
+      "journeyDate": "2026-10-25",
+      "fromStation": "MMCT",
+      "toStation": "NDLS",
+      "boardingStation": "MMCT",
+      "classType": "2A",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        { "passengerIndex": 1, "bookingStatus": "RAC 4", "currentStatus": "CNF A2 21", "confirmationChancePercent": 100 },
+        { "passengerIndex": 2, "bookingStatus": "RAC 5", "currentStatus": "CNF A2 22", "confirmationChancePercent": 100 }
+      ]
+    },
+    "2349812734": {
+      "pnr": "2349812734",
+      "trainNumber": "22436",
+      "trainName": "Vande Bharat Express",
+      "journeyDate": "2026-10-28",
+      "fromStation": "NDLS",
+      "toStation": "BSB",
+      "boardingStation": "NDLS",
+      "classType": "CC",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        { "passengerIndex": 1, "bookingStatus": "WL 14", "currentStatus": "WL 8", "confirmationChancePercent": 84 }
+      ]
+    }
+  },
+  "fareRules": {
+    "1A": { "basePerKm": 3.10, "resCharge": 60, "superfast": 75, "gstRate": 0.05 },
+    "2A": { "basePerKm": 1.95, "resCharge": 50, "superfast": 45, "gstRate": 0.05 },
+    "3A": { "basePerKm": 1.40, "resCharge": 40, "superfast": 45, "gstRate": 0.05 },
+    "EC": { "basePerKm": 2.45, "resCharge": 60, "superfast": 75, "gstRate": 0.05 },
+    "CC": { "basePerKm": 1.30, "resCharge": 40, "superfast": 45, "gstRate": 0.05 },
+    "SL": { "basePerKm": 0.52, "resCharge": 20, "superfast": 30, "gstRate": 0.0 }
+  },
+  "refundRules": [
+    { "condition": ">48h before scheduled departure", "confirmed": "Flat cancellation fee (1A: ₹240, 2A/EC: ₹200, 3A/CC: ₹180, SL: ₹120)", "waitlist": "Clerkage fee ₹60 per passenger" },
+    { "condition": "Between 48h and 12h before departure", "confirmed": "25% deduction subject to minimum flat fee", "waitlist": "Clerkage fee ₹60 per passenger" },
+    { "condition": "Between 12h and 4h (charting)", "confirmed": "50% deduction subject to minimum flat fee", "waitlist": "Clerkage fee ₹60 per passenger" },
+    { "condition": "<4h before departure / after charting", "confirmed": "No refund permissible", "waitlist": "Auto-cancellation with clerkage deduction" }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "cities": [
+    { "id": "mumbai", "name": "Mumbai Suburban Railway", "network": "Western / Central / Harbour", "dailyRidership": "7.5 Million" },
+    { "id": "delhi", "name": "Delhi Suburban EMU", "network": "Ring Railway & National Capital Region", "dailyRidership": "1.2 Million" },
+    { "id": "chennai", "name": "Chennai Suburban Railway", "network": "South, West, North & MRTS", "dailyRidership": "1.1 Million" },
+    { "id": "kolkata", "name": "Kolkata Suburban Railway", "network": "Eastern & South Eastern Lines", "dailyRidership": "3.2 Million" }
+  ],
+  "timetables": [
+    {
+      "corridor": "Western Line (Slow & Fast)",
+      "city": "Mumbai",
+      "services": [
+        { "trainId": "90001", "source": "Churchgate (CCG)", "destination": "Borivali (BVI)", "departureTime": "08:14", "type": "Fast" },
+        { "trainId": "90003", "source": "Churchgate (CCG)", "destination": "Virar (VR)", "departureTime": "08:22", "type": "Fast" },
+        { "trainId": "90005", "source": "Churchgate (CCG)", "destination": "Dahanu Road (DRD)", "departureTime": "08:31", "type": "AC" },
+        { "trainId": "90007", "source": "Churchgate (CCG)", "destination": "Andheri (ADH)", "departureTime": "08:38", "type": "Slow" }
+      ]
+    },
+    {
+      "corridor": "Central Main Line",
+      "city": "Mumbai",
+      "services": [
+        { "trainId": "97001", "source": "CSMT", "destination": "Kalyan (KYN)", "departureTime": "08:10", "type": "Fast" },
+        { "trainId": "97003", "source": "CSMT", "destination": "Kasara (KSRA)", "departureTime": "08:25", "type": "Fast" },
+        { "trainId": "97005", "source": "CSMT", "destination": "Thane (TNA)", "departureTime": "08:35", "type": "Slow" }
+      ]
+    },
+    {
+      "corridor": "Ring Railway & Ghaziabad EMU",
+      "city": "Delhi",
+      "services": [
+        { "trainId": "64401", "source": "New Delhi (NDLS)", "destination": "Ghaziabad (GZB)", "departureTime": "07:30", "type": "Slow" },
+        { "trainId": "64403", "source": "Hazrat Nizamuddin (NZM)", "destination": "Palwal (PWL)", "departureTime": "08:00", "type": "Fast" }
+      ]
+    }
+  ]
+}

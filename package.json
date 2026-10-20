@@ -1,0 +1,31 @@
+{
+  "name": "railsync",
+  "version": "1.0.0",
+  "description": "RailSync - Distributed Railway Intelligence and Monitoring Platform",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n \"GATEWAY,TRAIN,JOURNEY,RESERVE,ANALYTICS,CLIENT\" -c \"cyan,green,yellow,magenta,blue,white\" \"npx tsx services/gateway/server.ts\" \"npx tsx services/train-intel/server.ts\" \"npx tsx services/journey-station/server.ts\" \"npx tsx services/reservation/server.ts\" \"npx tsx services/analytics/server.ts\" \"npm --prefix client run dev\"",
+    "dev:backend": "concurrently -k -n \"GATEWAY,TRAIN,JOURNEY,RESERVE,ANALYTICS\" -c \"cyan,green,yellow,magenta,blue\" \"npx tsx services/gateway/server.ts\" \"npx tsx services/train-intel/server.ts\" \"npx tsx services/journey-station/server.ts\" \"npx tsx services/reservation/server.ts\" \"npx tsx services/analytics/server.ts\"",
+    "build": "npm --prefix client run build",
+    "test": "npx tsx tests/smoke-test.ts",
+    "test:smoke": "npx tsx tests/smoke-test.ts",
+    "start:gateway": "npx tsx services/gateway/server.ts",
+    "start:train": "npx tsx services/train-intel/server.ts",
+    "start:journey": "npx tsx services/journey-station/server.ts",
+    "start:reservation": "npx tsx services/reservation/server.ts",
+    "start:analytics": "npx tsx services/analytics/server.ts",
+    "start:client": "npm --prefix client run dev"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.19.2"
+  }
+}
