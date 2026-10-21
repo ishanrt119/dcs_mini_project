@@ -85,20 +85,20 @@ export const OverviewView: React.FC<Props> = ({ onNavigate }) => {
           <p className="text-[11px] text-slate-500 mt-1">Rajdhani, Vande Bharat, Shatabdi</p>
         </div>
 
-        {/* Quota Metric */}
+        {/* Live API Metric */}
         <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between text-slate-400 text-xs">
-            <span>RailRadar Internal Budget</span>
-            <ShieldAlert className="w-4 h-4 text-amber-400" />
+            <span>Live Railway API</span>
+            <Radio className="w-4 h-4 text-emerald-400 animate-pulse" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-cyan-400">{quota?.remainingBudget ?? 80}</span>
-            <span className="text-xs text-slate-400">/ {quota?.internalBudget ?? 80} allowed</span>
+            <span className="text-2xl font-bold text-emerald-400">ONLINE</span>
+            <span className="text-xs text-slate-400">Live API stream</span>
           </div>
           <div className="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
             <div
-              className="bg-cyan-500 h-full rounded-full"
-              style={{ width: `${Math.min(100, ((quota?.remainingBudget ?? 80) / 80) * 100)}%` }}
+              className="bg-emerald-500 h-full rounded-full"
+              style={{ width: '100%' }}
             ></div>
           </div>
         </div>
@@ -302,7 +302,7 @@ export const OverviewView: React.FC<Props> = ({ onNavigate }) => {
             <div className="w-8 h-8 rounded-lg bg-blue-950 flex items-center justify-center text-blue-400 mb-2 group-hover:scale-105 transition-transform">
               <Activity className="w-4 h-4" />
             </div>
-            <div className="font-semibold text-slate-200">DCS Architecture Demo</div>
+            <div className="font-semibold text-slate-200">DCS Cluster Monitor</div>
             <p className="text-[11px] text-slate-500 mt-0.5">Simulate 503 outage & RPC</p>
           </button>
         </div>

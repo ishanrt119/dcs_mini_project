@@ -1,32 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Api } from '../api';
 import { SourceBadge } from '../components/SourceBadge';
-import { Clock, Radio, Train, Search, AlertCircle } from 'lucide-react';
+import { Clock, Radio, Train, Search, AlertCircle, Loader2 } from 'lucide-react';
 
 interface Props {
   onSelectTrain: (trainNumber: string) => void;
 }
 
 export const LiveDeparturesView: React.FC<Props> = ({ onSelectTrain }) => {
-  const [stationCode, setStationCode] = useState('NDLS');
+  const [searchInput, setSearchInput] = useState('NDLS');
+  const [activeStation, setActiveStation] = useState('NDLS');
   const [departures, setDepartures] = useState<any[]>([]);
   const [stationName, setStationName] = useState('New Delhi');
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    fetchDepartures(stationCode);
-  }, [stationCode]);
+  const [searched, setSearched] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchDepartures = async (code: string) => {
+    if (!code.trim()) return;
     setLoading(true);
+    setSearched(true);
+    setError(null);
     try {
-      const resp = await Api.getLiveDepartures(code);
+      const resp = await Api.getLiveDepartures(code.trim());
       if (resp.success && resp.data) {
         setDepartures(resp.data.departures || []);
-        setStationName(resp.data.stationName || code);
+        setStationName(resp.data.stationName || code.trim());
+        setActiveStation(code.trim());
+      } else {
+        setError(resp.error?.message || `Unable to fetch live departures for #${code}`);
       }
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      setError(e.message || 'Error fetching live departures');
     } finally {
       setLoading(false);
     }
@@ -34,7 +39,7 @@ export const LiveDeparturesView: React.FC<Props> = ({ onSelectTrain }) => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (stationCode.trim()) fetchDepartures(stationCode.trim());
+    if (searchInput.trim()) fetchDepartures(searchInput.trim());
   };
 
   return (
@@ -55,24 +60,46 @@ export const LiveDeparturesView: React.FC<Props> = ({ onSelectTrain }) => {
           <div className="relative flex-1 max-w-xs">
             <input
               type="text"
-              value={stationCode}
-              onChange={e => setStationCode(e.target.value.toUpperCase())}
-              placeholder="Station code..."
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value.toUpperCase())}
+              placeholder="Station code (e.g. NDLS, MMCT, CNB)..."
               className="w-full bg-slate-950 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-xs text-white font-mono uppercase focus:border-cyan-500 focus:outline-none"
             />
             <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
           </div>
-          <button type="submit" className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs">
-            Fetch Departures
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 shadow-sm"
+          >
+            {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Clock className="w-3.5 h-3.5" />}
+            <span>{loading ? 'Fetching...' : 'Fetch Departures'}</span>
           </button>
         </form>
+
+        {error && (
+          <div className="mt-3 p-3 bg-red-950/40 border border-red-800/50 rounded-xl text-red-300 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+            <span>{error}</span>
+          </div>
+        )}
       </div>
 
-      {/* Departures Board */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-          <div>
-            <span className="font-mono text-cyan-400 font-bold text-lg mr-2">{stationCode}</span>
+      {!searched && !loading && !error && (
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-400 space-y-2">
+          <Clock className="w-10 h-10 text-slate-600 mx-auto mb-2" />
+          <h3 className="text-sm font-semibold text-white">No Station Selected</h3>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            Enter a station code above (e.g. NDLS, MMCT, CNB, BSB) and click <strong className="text-cyan-400">Fetch Departures</strong> to load real-time platform departure boards.
+          </p>
+        </div>
+      )}
+
+      {searched && (
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span className="font-mono text-cyan-400 font-bold text-lg mr-2">{activeStation}</span>
             <span className="font-bold text-white text-base">{stationName}</span>
           </div>
           <span className="text-xs text-slate-400">Next 2 to 4 hours</span>
@@ -94,7 +121,7 @@ export const LiveDeparturesView: React.FC<Props> = ({ onSelectTrain }) => {
               {departures.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="py-6 text-center text-slate-500">
-                    No immediate departures for {stationCode}. Try NDLS, MMCT, CNB, or BSB.
+                    No immediate departures for {activeStation}. Try NDLS, MMCT, CNB, or BSB.
                   </td>
                 </tr>
               ) : (
@@ -130,6 +157,7 @@ export const LiveDeparturesView: React.FC<Props> = ({ onSelectTrain }) => {
           </table>
         </div>
       </div>
-    </div>
-  );
+    )}
+  </div>
+);
 };

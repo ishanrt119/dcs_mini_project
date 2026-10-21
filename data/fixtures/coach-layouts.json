@@ -1,0 +1,995 @@
+{
+  "12301": {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12302": {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12305": {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12306": {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12431": {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12432": {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12433": {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12434": {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12951": {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "rakeType": "LHB Tejas",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12952": {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "rakeType": "LHB Tejas",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12953": {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "rakeType": "LHB Tejas",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "12954": {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "rakeType": "LHB Tejas",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "20103": {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "20104": {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "20607": {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "20608": {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "20833": {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "20901": {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "20902": {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "22435": {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "22436": {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "22439": {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "22440": {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "rakeType": "Vande Bharat Train18",
+    "totalCoaches": 6,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "C1",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "C2",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "C3",
+        "classType": "CC",
+        "capacity": 78,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "E1",
+        "classType": "EC",
+        "capacity": 52,
+        "positionFromEngine": 4
+      }
+    ]
+  },
+  "22691": {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  },
+  "22692": {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "rakeType": "LHB",
+    "totalCoaches": 8,
+    "fobAlignment": "Center Foot Over Bridge (Stairs align near coach B2/C2)",
+    "coaches": [
+      {
+        "coachCode": "H1",
+        "classType": "1A",
+        "capacity": 24,
+        "positionFromEngine": 1
+      },
+      {
+        "coachCode": "A1",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 2
+      },
+      {
+        "coachCode": "A2",
+        "classType": "2A",
+        "capacity": 48,
+        "positionFromEngine": 3
+      },
+      {
+        "coachCode": "B1",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 4
+      },
+      {
+        "coachCode": "B2",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 5
+      },
+      {
+        "coachCode": "B3",
+        "classType": "3A",
+        "capacity": 64,
+        "positionFromEngine": 6
+      }
+    ]
+  }
+}

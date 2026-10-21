@@ -1,36 +1,471 @@
 {
   "cities": [
-    { "id": "mumbai", "name": "Mumbai Suburban Railway", "network": "Western / Central / Harbour", "dailyRidership": "7.5 Million" },
-    { "id": "delhi", "name": "Delhi Suburban EMU", "network": "Ring Railway & National Capital Region", "dailyRidership": "1.2 Million" },
-    { "id": "chennai", "name": "Chennai Suburban Railway", "network": "South, West, North & MRTS", "dailyRidership": "1.1 Million" },
-    { "id": "kolkata", "name": "Kolkata Suburban Railway", "network": "Eastern & South Eastern Lines", "dailyRidership": "3.2 Million" }
+    {
+      "id": "mumbai",
+      "name": "Mumbai Suburban Railway",
+      "network": "Western / Central / Harbour",
+      "dailyRidership": "7.5 Million"
+    },
+    {
+      "id": "delhi",
+      "name": "Delhi Suburban EMU & Ring Railway",
+      "network": "National Capital Region Commuter Grid",
+      "dailyRidership": "1.2 Million"
+    },
+    {
+      "id": "chennai",
+      "name": "Chennai Suburban & MRTS",
+      "network": "South, West, North & Velachery MRTS",
+      "dailyRidership": "1.1 Million"
+    },
+    {
+      "id": "kolkata",
+      "name": "Kolkata Suburban Railway",
+      "network": "Howrah & Sealdah Commuter Divisions",
+      "dailyRidership": "3.2 Million"
+    },
+    {
+      "id": "bengaluru",
+      "name": "Bengaluru Commuter Rail (MEMU)",
+      "network": "KSR Bengaluru - Devanahalli Airport / Whitefield",
+      "dailyRidership": "0.4 Million"
+    }
   ],
   "timetables": [
     {
-      "corridor": "Western Line (Slow & Fast)",
+      "corridor": "Mumbai Western Line (Churchgate - Dahanu Road)",
       "city": "Mumbai",
       "services": [
-        { "trainId": "90001", "source": "Churchgate (CCG)", "destination": "Borivali (BVI)", "departureTime": "08:14", "type": "Fast" },
-        { "trainId": "90003", "source": "Churchgate (CCG)", "destination": "Virar (VR)", "departureTime": "08:22", "type": "Fast" },
-        { "trainId": "90005", "source": "Churchgate (CCG)", "destination": "Dahanu Road (DRD)", "departureTime": "08:31", "type": "AC" },
-        { "trainId": "90007", "source": "Churchgate (CCG)", "destination": "Andheri (ADH)", "departureTime": "08:38", "type": "Slow" }
+        {
+          "trainId": "90010",
+          "source": "Churchgate (CCG)",
+          "destination": "Virar (VR)",
+          "departureTime": "06:00",
+          "type": "AC Superfast"
+        },
+        {
+          "trainId": "90011",
+          "source": "Borivali (BVI)",
+          "destination": "Andheri (ADH)",
+          "departureTime": "06:14",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "90012",
+          "source": "Churchgate (CCG)",
+          "destination": "Dahanu Road (DRD)",
+          "departureTime": "07:28",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "90013",
+          "source": "Borivali (BVI)",
+          "destination": "Virar (VR)",
+          "departureTime": "07:42",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "90014",
+          "source": "Churchgate (CCG)",
+          "destination": "Dahanu Road (DRD)",
+          "departureTime": "08:56",
+          "type": "AC Superfast"
+        },
+        {
+          "trainId": "90015",
+          "source": "Borivali (BVI)",
+          "destination": "Andheri (ADH)",
+          "departureTime": "08:10",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "90016",
+          "source": "Churchgate (CCG)",
+          "destination": "Virar (VR)",
+          "departureTime": "09:24",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "90017",
+          "source": "Borivali (BVI)",
+          "destination": "Andheri (ADH)",
+          "departureTime": "09:38",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "90018",
+          "source": "Churchgate (CCG)",
+          "destination": "Dahanu Road (DRD)",
+          "departureTime": "10:52",
+          "type": "AC Superfast"
+        },
+        {
+          "trainId": "90019",
+          "source": "Borivali (BVI)",
+          "destination": "Virar (VR)",
+          "departureTime": "10:06",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "90020",
+          "source": "Churchgate (CCG)",
+          "destination": "Dahanu Road (DRD)",
+          "departureTime": "11:20",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "90021",
+          "source": "Borivali (BVI)",
+          "destination": "Andheri (ADH)",
+          "departureTime": "11:34",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "90022",
+          "source": "Churchgate (CCG)",
+          "destination": "Virar (VR)",
+          "departureTime": "12:48",
+          "type": "AC Superfast"
+        },
+        {
+          "trainId": "90023",
+          "source": "Borivali (BVI)",
+          "destination": "Andheri (ADH)",
+          "departureTime": "12:02",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "90024",
+          "source": "Churchgate (CCG)",
+          "destination": "Dahanu Road (DRD)",
+          "departureTime": "13:16",
+          "type": "Fast EMU"
+        }
       ]
     },
     {
-      "corridor": "Central Main Line",
+      "corridor": "Mumbai Central Main Line (CSMT - Kalyan - Kasara/Karjat)",
       "city": "Mumbai",
       "services": [
-        { "trainId": "97001", "source": "CSMT", "destination": "Kalyan (KYN)", "departureTime": "08:10", "type": "Fast" },
-        { "trainId": "97003", "source": "CSMT", "destination": "Kasara (KSRA)", "departureTime": "08:25", "type": "Fast" },
-        { "trainId": "97005", "source": "CSMT", "destination": "Thane (TNA)", "departureTime": "08:35", "type": "Slow" }
+        {
+          "trainId": "97010",
+          "source": "CSMT",
+          "destination": "Kasara (KSRA)",
+          "departureTime": "06:00",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "97011",
+          "source": "CSMT",
+          "destination": "Kalyan (KYN)",
+          "departureTime": "06:12",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97012",
+          "source": "CSMT",
+          "destination": "Karjat (KJT)",
+          "departureTime": "07:24",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97013",
+          "source": "CSMT",
+          "destination": "Kasara (KSRA)",
+          "departureTime": "07:36",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "97014",
+          "source": "CSMT",
+          "destination": "Karjat (KJT)",
+          "departureTime": "08:48",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97015",
+          "source": "CSMT",
+          "destination": "Kalyan (KYN)",
+          "departureTime": "08:00",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97016",
+          "source": "CSMT",
+          "destination": "Kasara (KSRA)",
+          "departureTime": "09:12",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "97017",
+          "source": "CSMT",
+          "destination": "Kalyan (KYN)",
+          "departureTime": "09:24",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97018",
+          "source": "CSMT",
+          "destination": "Karjat (KJT)",
+          "departureTime": "10:36",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97019",
+          "source": "CSMT",
+          "destination": "Kasara (KSRA)",
+          "departureTime": "10:48",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "97020",
+          "source": "CSMT",
+          "destination": "Karjat (KJT)",
+          "departureTime": "11:00",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97021",
+          "source": "CSMT",
+          "destination": "Kalyan (KYN)",
+          "departureTime": "11:12",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97022",
+          "source": "CSMT",
+          "destination": "Kasara (KSRA)",
+          "departureTime": "12:24",
+          "type": "Fast EMU"
+        },
+        {
+          "trainId": "97023",
+          "source": "CSMT",
+          "destination": "Kalyan (KYN)",
+          "departureTime": "12:36",
+          "type": "Slow Local"
+        },
+        {
+          "trainId": "97024",
+          "source": "CSMT",
+          "destination": "Karjat (KJT)",
+          "departureTime": "13:48",
+          "type": "Slow Local"
+        }
       ]
     },
     {
-      "corridor": "Ring Railway & Ghaziabad EMU",
+      "corridor": "Delhi NCR Commuter EMU & Ghaziabad Ring",
       "city": "Delhi",
       "services": [
-        { "trainId": "64401", "source": "New Delhi (NDLS)", "destination": "Ghaziabad (GZB)", "departureTime": "07:30", "type": "Slow" },
-        { "trainId": "64403", "source": "Hazrat Nizamuddin (NZM)", "destination": "Palwal (PWL)", "departureTime": "08:00", "type": "Fast" }
+        {
+          "trainId": "64410",
+          "source": "New Delhi (NDLS)",
+          "destination": "Ghaziabad (GZB)",
+          "departureTime": "07:00",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64411",
+          "source": "Hazrat Nizamuddin (NZM)",
+          "destination": "Palwal (PWL)",
+          "departureTime": "07:18",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64412",
+          "source": "New Delhi (NDLS)",
+          "destination": "Ghaziabad (GZB)",
+          "departureTime": "08:36",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64413",
+          "source": "Hazrat Nizamuddin (NZM)",
+          "destination": "Palwal (PWL)",
+          "departureTime": "08:54",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64414",
+          "source": "New Delhi (NDLS)",
+          "destination": "Ghaziabad (GZB)",
+          "departureTime": "09:12",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64415",
+          "source": "Hazrat Nizamuddin (NZM)",
+          "destination": "Palwal (PWL)",
+          "departureTime": "09:30",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64416",
+          "source": "New Delhi (NDLS)",
+          "destination": "Ghaziabad (GZB)",
+          "departureTime": "10:48",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64417",
+          "source": "Hazrat Nizamuddin (NZM)",
+          "destination": "Palwal (PWL)",
+          "departureTime": "10:06",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64418",
+          "source": "New Delhi (NDLS)",
+          "destination": "Ghaziabad (GZB)",
+          "departureTime": "11:24",
+          "type": "Commuter EMU"
+        },
+        {
+          "trainId": "64419",
+          "source": "Hazrat Nizamuddin (NZM)",
+          "destination": "Palwal (PWL)",
+          "departureTime": "11:42",
+          "type": "Commuter EMU"
+        }
+      ]
+    },
+    {
+      "corridor": "Chennai Suburban (Chennai Beach - Tambaram - Chengalpattu)",
+      "city": "Chennai",
+      "services": [
+        {
+          "trainId": "40010",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Tambaram (TBM)",
+          "departureTime": "06:00",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40011",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Chengalpattu (CGL)",
+          "departureTime": "06:15",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40012",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Tambaram (TBM)",
+          "departureTime": "07:30",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40013",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Chengalpattu (CGL)",
+          "departureTime": "07:45",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40014",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Tambaram (TBM)",
+          "departureTime": "08:00",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40015",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Chengalpattu (CGL)",
+          "departureTime": "08:15",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40016",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Tambaram (TBM)",
+          "departureTime": "09:30",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40017",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Chengalpattu (CGL)",
+          "departureTime": "09:45",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40018",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Tambaram (TBM)",
+          "departureTime": "10:00",
+          "type": "Suburban EMU"
+        },
+        {
+          "trainId": "40019",
+          "source": "Chennai Beach (MSB)",
+          "destination": "Chengalpattu (CGL)",
+          "departureTime": "10:15",
+          "type": "Suburban EMU"
+        }
+      ]
+    },
+    {
+      "corridor": "Bengaluru MEMU Airport & Commuter Feeder",
+      "city": "Bengaluru",
+      "services": [
+        {
+          "trainId": "06510",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Kempegowda Intl Airport Halt (KIAD)",
+          "departureTime": "06:20",
+          "type": "Airport MEMU Express"
+        },
+        {
+          "trainId": "06511",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Whitefield (WFD)",
+          "departureTime": "07:20",
+          "type": "Airport MEMU Express"
+        },
+        {
+          "trainId": "06512",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Kempegowda Intl Airport Halt (KIAD)",
+          "departureTime": "08:20",
+          "type": "Airport MEMU Express"
+        },
+        {
+          "trainId": "06513",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Whitefield (WFD)",
+          "departureTime": "09:20",
+          "type": "Airport MEMU Express"
+        },
+        {
+          "trainId": "06514",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Kempegowda Intl Airport Halt (KIAD)",
+          "departureTime": "10:20",
+          "type": "Airport MEMU Express"
+        },
+        {
+          "trainId": "06515",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Whitefield (WFD)",
+          "departureTime": "11:20",
+          "type": "Airport MEMU Express"
+        },
+        {
+          "trainId": "06516",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Kempegowda Intl Airport Halt (KIAD)",
+          "departureTime": "12:20",
+          "type": "Airport MEMU Express"
+        },
+        {
+          "trainId": "06517",
+          "source": "KSR Bengaluru (SBC)",
+          "destination": "Whitefield (WFD)",
+          "departureTime": "13:20",
+          "type": "Airport MEMU Express"
+        }
       ]
     }
   ]

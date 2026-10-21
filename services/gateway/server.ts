@@ -3,13 +3,18 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { ApiResponse, DataSourceLabel, ServiceHealthMetric } from '../../shared/types.js';
 import { QuotaCacheManager } from '../../shared/quota-cache-manager.js';
-import { ServiceHealthRepository, SavedTrainsRepository, initDatabase } from '../../data/db/index.js';
+import { ServiceHealthRepository, SavedTrainsRepository, SystemConfigRepository, initDatabase } from '../../data/db/index.js';
 import { invokeRpc } from '../../shared/rpc.js';
+import { DemoRailwayAdapter } from '../../shared/demo-railway-adapter.js';
 
 dotenv.config();
 
 // Initialize DB schema
 initDatabase();
+
+// Enforce permanent offline demo mode in SQLite system_config
+SystemConfigRepository.set('DEMO_MODE', 'true');
+SystemConfigRepository.set('LIVE_API_ENABLED', 'false');
 
 const app = express();
 const PORT = parseInt(process.env.GATEWAY_PORT || '4000', 10);
@@ -177,38 +182,61 @@ app.post('/api/system/simulate-outage', async (req, res) => {
   }
 });
 
-// 3. API Quota Dashboard & Budget Manager Status
+// 3. API Quota Dashboard & Budget Manager Status (Honest Offline Representation)
 app.get('/api/system/quota', (req, res) => {
   const status = quotaManager.getQuotaStatus();
-  const metrics = quotaManager.verifyOutboundPermission('TRAIN_LIVE_STATUS');
 
   res.json({
     success: true,
     data: {
       ...status,
-      apiKeyConfigured: !!process.env.RAILRADAR_API_KEY && process.env.RAILRADAR_API_KEY.length > 5,
+      apiKeyConfigured: false,
+      actualOutboundCalls: 0,
+      providerAccessDisabled: true,
       budgetManagerPolicy: {
         strictQuotaEnforcement: true,
         monthlyCeiling: 100,
         internalHardCap: 80,
         emergencyBuffer: 20,
-        quotaRule: 'Zero unconfirmed live calls; TTL cached results served on dashboard renders.'
+        quotaRule: 'Offline Demo Mode: External railway API requests are disabled. Zero outbound calls.'
       }
     },
-    meta: { traceId: `quota-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_HISTORICAL_OBSERVATION' as DataSourceLabel }
+    meta: {
+      traceId: `quota-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      executionTimeMs: 1,
+      source: 'LOCAL_HISTORICAL_OBSERVATION' as DataSourceLabel
+    }
   });
 });
 
-// 4. Mode Toggle (DEMO_MODE & LIVE_API_ENABLED)
+// 4. Mode Toggle (Enforces permanent offline demo mode)
 app.post('/api/system/mode', (req, res) => {
-  const { demoMode, liveApiEnabled } = req.body;
-  if (demoMode !== undefined) quotaManager.setDemoMode(!!demoMode);
-  if (liveApiEnabled !== undefined) quotaManager.setLiveApiEnabled(!!liveApiEnabled);
+  // Prohibit re-enabling live API
+  quotaManager.setDemoMode(true);
+  quotaManager.setLiveApiEnabled(false);
 
   res.json({
     success: true,
     data: quotaManager.getQuotaStatus(),
-    message: 'Operational mode updated successfully. Quota protection rules active.'
+    message: 'RailSync is permanently configured in Offline Demo Mode. Outbound railway API calls are disabled.'
+  });
+});
+
+// 5. Mock Provider Call Sandbox (Interactive API Registry Demonstration)
+app.post('/api/system/mock-provider-call', (req, res) => {
+  const { endpointId, params, simulatedStatus } = req.body;
+  const adapter = DemoRailwayAdapter.getInstance();
+  const result = adapter.executeMockProviderCall(
+    endpointId || 'TRAIN_LIVE_STATUS',
+    params || {},
+    simulatedStatus || 200
+  );
+  quotaManager.recordMockRequest();
+
+  res.json({
+    success: result.ok,
+    ...result
   });
 });
 
@@ -252,7 +280,7 @@ app.post('/api/system/rpc-demo', async (req, res) => {
 app.get('/api/overview', async (req, res) => {
   const start = Date.now();
   const [trainResp, incidentsResp, healthResp, quotaData, savedTrains] = await Promise.all([
-    forwardRequest(SERVICES.TRAIN, 'train-intel', '/trains/12951/live', req),
+    forwardRequest(SERVICES.TRAIN, 'train-intel', '/trains/12951/live?cachedOnly=true', req),
     forwardRequest(SERVICES.ANALYTICS, 'analytics', '/analytics/incidents', req),
     forwardRequest(SERVICES.ANALYTICS, 'analytics', '/network/map-feed', req),
     Promise.resolve(quotaManager.getQuotaStatus()),
@@ -283,8 +311,13 @@ app.get('/api/overview', async (req, res) => {
 
 // ------------------- Downstream Microservice Proxies -------------------
 
-// Train Intelligence Routes -> Port 4001
+// Train Intelligence Routes -> Port 4001 (with /api/trains/between routed to Journey Service)
 app.use('/api/trains', async (req, res) => {
+  if (req.url.startsWith('/between')) {
+    const subPath = `/trains${req.url}`;
+    const { status, body } = await forwardRequest(SERVICES.JOURNEY, 'journey-station', subPath, req);
+    return res.status(status).json(body);
+  }
   const subPath = `/trains${req.url === '/' ? '' : req.url}`;
   const { status, body } = await forwardRequest(SERVICES.TRAIN, 'train-intel', subPath, req);
   res.status(status).json(body);

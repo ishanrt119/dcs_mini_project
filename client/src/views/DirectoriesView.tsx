@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Api } from '../api';
 import { SourceBadge } from '../components/SourceBadge';
-import { FolderTree, Train, Building2, Binary, Gauge, Zap } from 'lucide-react';
+import { FolderTree, Train, Building2, Binary, Gauge, Loader2 } from 'lucide-react';
 
 export const DirectoriesView: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'trains' | 'stations' | 'compressed' | 'categories'>('trains');
@@ -11,12 +11,12 @@ export const DirectoriesView: React.FC = () => {
   const [decompressedTuples, setDecompressedTuples] = useState<any[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [speedTypes, setSpeedTypes] = useState<any[]>([]);
-
-  useEffect(() => {
-    loadData();
-  }, [activeTab]);
+  const [loading, setLoading] = useState(false);
+  // Track which tabs have already been loaded
+  const [loaded, setLoaded] = useState<Set<string>>(new Set());
 
   const loadData = async () => {
+    setLoading(true);
     try {
       if (activeTab === 'trains') {
         const resp = await Api.getTrainDirectory();
@@ -43,8 +43,11 @@ export const DirectoriesView: React.FC = () => {
         if (catResp.success) setCategories(catResp.data || []);
         if (spdResp.success) setSpeedTypes(spdResp.data || []);
       }
+      setLoaded(prev => new Set([...prev, activeTab]));
     } catch (e) {
       console.error(e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -115,74 +118,123 @@ export const DirectoriesView: React.FC = () => {
       {/* TAB 1: TRAINS */}
       {activeTab === 'trains' && (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
-          <h3 className="text-sm font-bold text-white">Registered Trains Master Directory</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="border-b border-slate-800 text-slate-400 text-[11px] uppercase tracking-wider">
-                  <th className="pb-3 font-semibold">Number & Name</th>
-                  <th className="pb-3 font-semibold">Category</th>
-                  <th className="pb-3 font-semibold">Speed Tier</th>
-                  <th className="pb-3 font-semibold">Route Path</th>
-                  <th className="pb-3 font-semibold">Operating Days</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-850">
-                {trains.map(t => (
-                  <tr key={t.trainNumber} className="hover:bg-slate-800/40">
-                    <td className="py-3 font-medium text-slate-200">
-                      <span className="font-mono text-cyan-400 font-bold mr-2">{t.trainNumber}</span>
-                      {t.trainName}
-                    </td>
-                    <td className="py-3 text-slate-300">{t.category}</td>
-                    <td className="py-3 text-slate-400">{t.speedType}</td>
-                    <td className="py-3 text-slate-400">{t.origin?.name} → {t.destination?.name}</td>
-                    <td className="py-3 text-slate-400 font-mono">{t.operatingDays?.join(', ')}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-bold text-white">Registered Trains Master Directory</h3>
+            <button
+              onClick={loadData}
+              disabled={loading}
+              className="px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 transition-all"
+            >
+              {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Train className="w-3.5 h-3.5" />}
+              <span>{loading ? 'Loading...' : 'Load Directory'}</span>
+            </button>
           </div>
+          {!loaded.has('trains') && !loading ? (
+            <div className="py-10 text-center text-slate-500 text-xs">
+              Click <span className="text-cyan-400 font-semibold">Load Directory</span> to fetch the trains master index.
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="border-b border-slate-800 text-slate-400 text-[11px] uppercase tracking-wider">
+                    <th className="pb-3 font-semibold">Number & Name</th>
+                    <th className="pb-3 font-semibold">Category</th>
+                    <th className="pb-3 font-semibold">Speed Tier</th>
+                    <th className="pb-3 font-semibold">Route Path</th>
+                    <th className="pb-3 font-semibold">Operating Days</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-850">
+                  {trains.map(t => (
+                    <tr key={t.trainNumber} className="hover:bg-slate-800/40">
+                      <td className="py-3 font-medium text-slate-200">
+                        <span className="font-mono text-cyan-400 font-bold mr-2">{t.trainNumber}</span>
+                        {t.trainName}
+                      </td>
+                      <td className="py-3 text-slate-300">{t.category}</td>
+                      <td className="py-3 text-slate-400">{t.speedType}</td>
+                      <td className="py-3 text-slate-400">{t.origin?.name} → {t.destination?.name}</td>
+                      <td className="py-3 text-slate-400 font-mono">{t.operatingDays?.join(', ')}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
 
       {/* TAB 2: STATIONS */}
       {activeTab === 'stations' && (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
-          <h3 className="text-sm font-bold text-white">Station Geographic Index</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="border-b border-slate-800 text-slate-400 text-[11px] uppercase tracking-wider">
-                  <th className="pb-3 font-semibold">Code & Station</th>
-                  <th className="pb-3 font-semibold">City, State</th>
-                  <th className="pb-3 font-semibold">Railway Zone</th>
-                  <th className="pb-3 font-semibold">Platforms</th>
-                  <th className="pb-3 font-semibold">Coordinates</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-850">
-                {stations.map(s => (
-                  <tr key={s.code} className="hover:bg-slate-800/40">
-                    <td className="py-3 font-medium text-slate-200">
-                      <span className="font-mono text-cyan-400 font-bold mr-2">{s.code}</span>
-                      {s.name}
-                    </td>
-                    <td className="py-3 text-slate-300">{s.city}, {s.state}</td>
-                    <td className="py-3 font-mono text-slate-400">{s.zone}</td>
-                    <td className="py-3 text-slate-300 font-mono">{s.platforms}</td>
-                    <td className="py-3 text-slate-500 font-mono">{s.lat}, {s.lng}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-bold text-white">Station Geographic Index</h3>
+            <button
+              onClick={loadData}
+              disabled={loading}
+              className="px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 transition-all"
+            >
+              {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Building2 className="w-3.5 h-3.5" />}
+              <span>{loading ? 'Loading...' : 'Load Directory'}</span>
+            </button>
           </div>
+          {!loaded.has('stations') && !loading ? (
+            <div className="py-10 text-center text-slate-500 text-xs">
+              Click <span className="text-cyan-400 font-semibold">Load Directory</span> to fetch the station geographic index.
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="border-b border-slate-800 text-slate-400 text-[11px] uppercase tracking-wider">
+                    <th className="pb-3 font-semibold">Code & Station</th>
+                    <th className="pb-3 font-semibold">City, State</th>
+                    <th className="pb-3 font-semibold">Railway Zone</th>
+                    <th className="pb-3 font-semibold">Platforms</th>
+                    <th className="pb-3 font-semibold">Coordinates</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-850">
+                  {stations.map(s => (
+                    <tr key={s.code} className="hover:bg-slate-800/40">
+                      <td className="py-3 font-medium text-slate-200">
+                        <span className="font-mono text-cyan-400 font-bold mr-2">{s.code}</span>
+                        {s.name}
+                      </td>
+                      <td className="py-3 text-slate-300">{s.city}, {s.state}</td>
+                      <td className="py-3 font-mono text-slate-400">{s.zone}</td>
+                      <td className="py-3 text-slate-300 font-mono">{s.platforms}</td>
+                      <td className="py-3 text-slate-500 font-mono">{s.lat}, {s.lng}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
 
       {/* TAB 3: COMPRESSED DATASETS */}
-      {activeTab === 'compressed' && compressedData && (
+      {activeTab === 'compressed' && (
         <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-bold text-white">High-Density Compressed Feed</h3>
+            <button
+              onClick={loadData}
+              disabled={loading}
+              className="px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 transition-all"
+            >
+              {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Binary className="w-3.5 h-3.5" />}
+              <span>{loading ? 'Decoding...' : 'Load Compressed Feed'}</span>
+            </button>
+          </div>
+          {!loaded.has('compressed') && !loading && (
+            <div className="py-10 text-center text-slate-500 text-xs">
+              Click <span className="text-cyan-400 font-semibold">Load Compressed Feed</span> to decode the high-density delta payload.
+            </div>
+          )}
+          {compressedData && (
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <span className="text-sm font-bold text-white">Compressed High-Density Delta Feed</span>
@@ -215,12 +267,30 @@ export const DirectoriesView: React.FC = () => {
               </div>
             </div>
           </div>
+          )}
         </div>
       )}
 
       {/* TAB 4: CATEGORIES & SPEED TYPES */}
       {activeTab === 'categories' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-bold text-white">Speed Classes & Train Categories</h3>
+            <button
+              onClick={loadData}
+              disabled={loading}
+              className="px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 transition-all"
+            >
+              {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Gauge className="w-3.5 h-3.5" />}
+              <span>{loading ? 'Loading...' : 'Load Categories'}</span>
+            </button>
+          </div>
+          {!loaded.has('categories') && !loading ? (
+            <div className="py-10 text-center text-slate-500 text-xs">
+              Click <span className="text-cyan-400 font-semibold">Load Categories</span> to fetch speed tiers and official train categories.
+            </div>
+          ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
               <Train className="w-4 h-4 text-cyan-400" />
@@ -249,6 +319,8 @@ export const DirectoriesView: React.FC = () => {
               ))}
             </div>
           </div>
+          </div>
+          )}
         </div>
       )}
     </div>

@@ -47,7 +47,7 @@ export const DisruptionSimView: React.FC = () => {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
         <div className="flex items-center gap-2 p-3 rounded-xl bg-amber-950/30 border border-amber-800/50 text-xs text-amber-300">
           <ShieldCheck className="w-4 h-4 shrink-0 text-amber-400" />
-          <span>Operational Safety Isolation: Simulation runs purely in local analytics memory and SQLite. Upstream RailRadar data is untouched.</span>
+          <span>Operational Safety Isolation: Simulation runs purely in local analytics memory and SQLite. External networks are never contacted.</span>
         </div>
 
         <form onSubmit={handleSimulate} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end text-xs">

@@ -5,6 +5,7 @@ import path from 'path';
 import fs from 'fs';
 import { ApiResponse, LiveTrainStatus, TrainDetail, DataSourceLabel } from '../../shared/types.js';
 import { QuotaCacheManager } from '../../shared/quota-cache-manager.js';
+import { DemoRailwayAdapter } from '../../shared/demo-railway-adapter.js';
 import { SnapshotsRepository, ServiceHealthRepository } from '../../data/db/index.js';
 
 dotenv.config();
@@ -19,8 +20,9 @@ app.use(express.json());
 const startTime = Date.now();
 let requestCount = 0;
 const quotaManager = QuotaCacheManager.getInstance();
+const demoAdapter = DemoRailwayAdapter.getInstance();
 
-// Load local fixtures
+// Load local fixtures for fast access
 const trainsFixturePath = path.resolve(process.cwd(), 'data/fixtures/trains.json');
 const trainsData: any[] = JSON.parse(fs.readFileSync(trainsFixturePath, 'utf-8'));
 
@@ -83,8 +85,6 @@ app.get('/trains/:number/live', async (req, res) => {
   const authoritative = req.query.authoritative === 'true';
   const haltsOnly = req.query.haltsOnly === 'true';
   const geometry = req.query.geometry === 'true';
-  const format = (req.query.format as string) || 'coordinates';
-  const includeCoordinates = req.query.includeCoordinates !== 'false';
 
   const cacheKey = `train_live_${trainNumber}_${date}_${haltsOnly}_${geometry}`;
 
@@ -100,7 +100,7 @@ app.get('/trains/:number/live', async (req, res) => {
           traceId: `cache-${Date.now()}`,
           timestamp: new Date().toISOString(),
           executionTimeMs: Date.now() - reqStart,
-          source: 'CACHED_PROVIDER_DATA' as DataSourceLabel,
+          source: 'LOCAL_CACHE' as DataSourceLabel,
           isCached: true,
           cacheTtlRemainingSec: cached.ttlRemainingSec,
           endpointId: 'TRAIN_LIVE_STATUS'
@@ -109,203 +109,86 @@ app.get('/trains/:number/live', async (req, res) => {
     }
   }
 
-  // Pre-flight permission verification
-  const permission = quotaManager.verifyOutboundPermission('TRAIN_LIVE_STATUS');
+  // Obtain simulated status deterministically from Demo Railway Adapter
+  const liveResult = demoAdapter.getLiveTrainStatus(trainNumber, date);
 
-  if (permission.allowed) {
-    // Live Outbound Call to RailRadar API
-    try {
-      const result = await quotaManager.executeWithDeduplication(cacheKey, async () => {
-        const liveUrl = new URL(`${process.env.RAILRADAR_BASE_URL || 'https://api.railradar.in'}/v1/trains/${trainNumber}/live`);
-        liveUrl.searchParams.set('date', date);
-        if (authoritative) liveUrl.searchParams.set('authoritative', 'true');
-        if (haltsOnly) liveUrl.searchParams.set('haltsOnly', 'true');
-        if (geometry) liveUrl.searchParams.set('geometry', 'true');
-        if (format) liveUrl.searchParams.set('format', format);
-        if (includeCoordinates) liveUrl.searchParams.set('includeCoordinates', 'true');
+  if (liveResult) {
+    quotaManager.setCached(cacheKey, liveResult.status, 60);
 
-        const apiResponse = await fetch(liveUrl.toString(), {
-          headers: {
-            'Authorization': `Bearer ${process.env.RAILRADAR_API_KEY}`,
-            'Accept': 'application/json'
-          }
-        });
-
-        const status = apiResponse.status;
-        const duration = Date.now() - reqStart;
-        quotaManager.recordOutboundLog('TRAIN_LIVE_STATUS', `/v1/trains/${trainNumber}/live`, trainNumber, status, duration);
-
-        if (!apiResponse.ok) {
-          throw new Error(`RailRadar provider returned HTTP ${status}: ${apiResponse.statusText}`);
-        }
-
-        const json = await apiResponse.json();
-        return json;
-      });
-
-      // Cache live result for 120 seconds
-      quotaManager.setCached(cacheKey, result.data, 120);
-
-      // Save snapshot for trend analytics
-      if (result.data) {
-        SnapshotsRepository.save(
-          trainNumber,
-          result.data.delayMinutes || 0,
-          result.data.currentLocation?.stationCode || '',
-          result.data.currentSpeedKmph || 0,
-          result.data.status || 'Running'
-        );
-      }
-
-      return res.json({
-        success: true,
-        data: result.data,
-        meta: {
-          traceId: `live-${Date.now()}`,
-          timestamp: new Date().toISOString(),
-          executionTimeMs: Date.now() - reqStart,
-          source: 'LIVE_PROVIDER_DATA' as DataSourceLabel,
-          endpointId: 'TRAIN_LIVE_STATUS'
-        }
-      });
-    } catch (err: any) {
-      return res.status(502).json({
-        success: false,
-        error: {
-          code: 'UPSTREAM_PROVIDER_ERROR',
-          message: err.message,
-          quotaStatus: quotaManager.getQuotaStatus()
-        },
-        meta: {
-          traceId: `err-${Date.now()}`,
-          timestamp: new Date().toISOString(),
-          executionTimeMs: Date.now() - reqStart,
-          source: 'UNAVAILABLE' as DataSourceLabel
-        }
-      });
-    }
-  }
-
-  // DEMO MODE / LOCAL FIXTURE FALLBACK (PROTECTS QUOTA)
-  const matched = trainsData.find(t => t.trainNumber === trainNumber);
-  if (!matched) {
-    // Generate a structured deterministic mock for arbitrary 5-digit train numbers
-    const fallbackTrain: LiveTrainStatus = {
+    // Save snapshot for trend analytics
+    SnapshotsRepository.save(
       trainNumber,
-      trainName: `Special Express #${trainNumber}`,
-      startDate: date,
-      lastUpdatedAt: new Date().toISOString(),
-      status: 'Running On Time',
-      delayMinutes: 0,
-      currentSpeedKmph: 95,
-      isLive: true,
-      currentLocation: {
-        stationCode: 'CNB',
-        stationName: 'Kanpur Central',
-        distanceFromOriginKm: 440,
-        lat: 26.4537,
-        lng: 80.3512
-      },
-      exceptions: [],
-      route: [
-        { stationCode: 'NDLS', stationName: 'New Delhi', scheduledArrival: '06:00', scheduledDeparture: '06:00', actualArrival: '06:00', actualDeparture: '06:00', delayArrivalMinutes: 0, delayDepartureMinutes: 0, distanceKm: 0, dayNumber: 1, platform: '1', hasDeparted: true },
-        { stationCode: 'CNB', stationName: 'Kanpur Central', scheduledArrival: '11:00', scheduledDeparture: '11:05', actualArrival: '11:00', actualDeparture: '11:05', delayArrivalMinutes: 0, delayDepartureMinutes: 0, distanceKm: 440, dayNumber: 1, platform: '2', hasDeparted: false, isCurrent: true },
-        { stationCode: 'HWH', stationName: 'Howrah Junction', scheduledArrival: '20:30', scheduledDeparture: '20:30', delayArrivalMinutes: 0, delayDepartureMinutes: 0, distanceKm: 1450, dayNumber: 1, platform: '8', hasDeparted: false }
-      ]
-    };
-
-    quotaManager.setCached(cacheKey, fallbackTrain, 120);
-    SnapshotsRepository.save(trainNumber, 0, 'CNB', 95, 'Running On Time');
+      liveResult.status.delayMinutes || 0,
+      liveResult.status.currentLocation?.stationCode || '',
+      liveResult.status.currentSpeedKmph || 0,
+      liveResult.status.status || 'Running'
+    );
 
     return res.json({
       success: true,
-      data: fallbackTrain,
+      data: liveResult.status,
       meta: {
-        traceId: `demo-${Date.now()}`,
+        traceId: `sim-${Date.now()}`,
         timestamp: new Date().toISOString(),
         executionTimeMs: Date.now() - reqStart,
-        source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+        source: liveResult.source,
         endpointId: 'TRAIN_LIVE_STATUS'
       }
     });
   }
 
-  // Clone matched fixture with refreshed timestamp
-  const demoStatus: LiveTrainStatus = {
-    ...matched,
+  // Fallback for arbitrary unregistered numbers
+  const fallbackTrain: LiveTrainStatus = {
+    trainNumber,
+    trainName: `Special Express #${trainNumber}`,
     startDate: date,
-    lastUpdatedAt: new Date().toISOString()
+    lastUpdatedAt: new Date().toISOString(),
+    status: 'Running On Time',
+    delayMinutes: 0,
+    currentSpeedKmph: 95,
+    isLive: true,
+    currentLocation: {
+      stationCode: 'CNB',
+      stationName: 'Kanpur Central',
+      distanceFromOriginKm: 440,
+      lat: 26.4537,
+      lng: 80.3512
+    },
+    exceptions: [],
+    route: [
+      { stationCode: 'NDLS', stationName: 'New Delhi', scheduledArrival: '06:00', scheduledDeparture: '06:00', actualArrival: '06:00', actualDeparture: '06:00', delayArrivalMinutes: 0, delayDepartureMinutes: 0, distanceKm: 0, dayNumber: 1, platform: '1', hasDeparted: true },
+      { stationCode: 'CNB', stationName: 'Kanpur Central', scheduledArrival: '11:00', scheduledDeparture: '11:05', actualArrival: '11:00', actualDeparture: '11:05', delayArrivalMinutes: 0, delayDepartureMinutes: 0, distanceKm: 440, dayNumber: 1, platform: '2', hasDeparted: false, isCurrent: true },
+      { stationCode: 'HWH', stationName: 'Howrah Junction', scheduledArrival: '20:30', scheduledDeparture: '20:30', delayArrivalMinutes: 0, delayDepartureMinutes: 0, distanceKm: 1450, dayNumber: 1, platform: '8', hasDeparted: false }
+    ]
   };
 
-  // Cache and record snapshot
-  quotaManager.setCached(cacheKey, demoStatus, 120);
-  SnapshotsRepository.save(
-    trainNumber,
-    demoStatus.delayMinutes,
-    demoStatus.currentLocation.stationCode,
-    demoStatus.currentSpeedKmph,
-    demoStatus.status
-  );
+  quotaManager.setCached(cacheKey, fallbackTrain, 60);
+  SnapshotsRepository.save(trainNumber, 0, 'CNB', 95, 'Running On Time');
 
   return res.json({
     success: true,
-    data: demoStatus,
+    data: fallbackTrain,
     meta: {
       traceId: `demo-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: Date.now() - reqStart,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_SIMULATION' as DataSourceLabel,
       endpointId: 'TRAIN_LIVE_STATUS'
     }
   });
 });
 
-// 2. Train Details (GET /v1/trains/:number)
-app.get('/trains/:number', (req, res) => {
-  const trainNumber = req.params.number.trim();
-  const matched = trainsData.find(t => t.trainNumber === trainNumber);
-  if (!matched) {
-    return res.status(404).json({
-      success: false,
-      error: { code: 'TRAIN_NOT_FOUND', message: `Train number ${trainNumber} not found in database.` },
-      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
-    });
-  }
-
-  const detail: TrainDetail = {
-    trainNumber: matched.trainNumber,
-    trainName: matched.trainName,
-    category: matched.category,
-    speedType: matched.speedType,
-    origin: matched.origin,
-    destination: matched.destination,
-    totalDistanceKm: matched.totalDistanceKm,
-    totalDurationMinutes: matched.totalDurationMinutes,
-    operatingDays: matched.operatingDays,
-    classes: matched.classes,
-    pantryAvailable: matched.pantryAvailable,
-    rakeType: matched.rakeType
-  };
-
-  res.json({
-    success: true,
-    data: detail,
-    meta: {
-      traceId: `detail-${Date.now()}`,
-      timestamp: new Date().toISOString(),
-      executionTimeMs: 2,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
-      endpointId: 'TRAIN_DETAILS'
-    }
-  });
-});
-
-// 3. Timetable & Halts (GET /v1/trains/:number/timetable)
+// 2. Timetable & Halts (GET /v1/trains/:number/timetable)
 app.get('/trains/:number/timetable', (req, res) => {
   const trainNumber = req.params.number.trim();
   const matched = trainsData.find(t => t.trainNumber === trainNumber);
+
   if (!matched) {
-    return res.status(404).json({ success: false, error: { code: 'TRAIN_NOT_FOUND', message: 'Train not found' } });
+    return res.status(404).json({
+      success: false,
+      error: { code: 'TRAIN_NOT_FOUND', message: `Timetable for train ${trainNumber} not found.` },
+      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
+    });
   }
 
   res.json({
@@ -313,147 +196,149 @@ app.get('/trains/:number/timetable', (req, res) => {
     data: {
       trainNumber: matched.trainNumber,
       trainName: matched.trainName,
+      operatingDays: matched.operatingDays,
       halts: matched.route
     },
     meta: {
       traceId: `tt-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 1,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'TRAIN_TIMETABLE_HALTS'
     }
   });
 });
 
-// 4. Route Geometry (GET /v1/trains/:number/geometry)
+// 3. Route Geometry (GET /v1/trains/:number/geometry)
 app.get('/trains/:number/geometry', (req, res) => {
   const trainNumber = req.params.number.trim();
-  const matched = trainsData.find(t => t.trainNumber === trainNumber);
-  if (!matched || !matched.geometry) {
-    return res.status(404).json({ success: false, error: { code: 'GEOMETRY_NOT_FOUND', message: 'Geometry not available for train' } });
-  }
+  const matched = trainsData.find(t => t.trainNumber === trainNumber) || trainsData[0];
+
+  const coordinates = matched.route
+    .filter((h: any) => h.lat && h.lng)
+    .map((h: any) => [h.lat, h.lng]);
 
   res.json({
     success: true,
-    data: matched.geometry,
+    data: {
+      trainNumber: matched.trainNumber,
+      type: 'LineString',
+      coordinates: coordinates.length > 0 ? coordinates : [[28.6424, 77.2195], [18.9696, 72.8193]]
+    },
     meta: {
       traceId: `geo-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 1,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'TRAIN_ROUTE_GEOMETRY'
     }
   });
 });
 
-// 5. Coach Layout (GET /v1/trains/:number/coach-layout)
+// 4. Coach Layout (GET /v1/trains/:number/coach-layout)
 app.get('/trains/:number/coach-layout', (req, res) => {
   const trainNumber = req.params.number.trim();
-  const matched = trainsData.find(t => t.trainNumber === trainNumber);
-  if (!matched) {
-    return res.status(404).json({ success: false, error: { code: 'TRAIN_NOT_FOUND', message: 'Train not found' } });
+  const layout = demoAdapter.getCoachLayout(trainNumber);
+
+  if (!layout) {
+    return res.status(404).json({
+      success: false,
+      error: { code: 'LAYOUT_NOT_FOUND', message: `Coach layout for ${trainNumber} not found` },
+      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
+    });
   }
 
   res.json({
     success: true,
-    data: {
-      trainNumber: matched.trainNumber,
-      trainName: matched.trainName,
-      rakeType: matched.rakeType,
-      coaches: matched.coachLayout || []
-    },
+    data: layout,
     meta: {
       traceId: `coach-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 1,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'TRAIN_COACH_LAYOUT'
     }
   });
 });
 
-// 6. Platform Position (GET /v1/trains/:number/platform-positions)
+// 5. Platform Position (GET /v1/trains/:number/platform-positions)
 app.get('/trains/:number/platform-positions', (req, res) => {
   const trainNumber = req.params.number.trim();
-  const matched = trainsData.find(t => t.trainNumber === trainNumber);
-  if (!matched) {
-    return res.status(404).json({ success: false, error: { code: 'TRAIN_NOT_FOUND', message: 'Train not found' } });
-  }
+  const layout = demoAdapter.getCoachLayout(trainNumber);
+  const train = trainsData.find(t => t.trainNumber === trainNumber) || trainsData[0];
+  const stationCode = (req.query.stationCode as string) || train.origin.code;
 
-  const positions = (matched.coachLayout || []).map((c: any) => ({
-    coachCode: c.code,
+  const positions = (layout?.coaches || []).map((c: any) => ({
+    coachCode: c.coachCode,
     classType: c.classType,
-    position: c.position,
-    platformAlignment: c.platformPosition,
-    nearestFob: c.position <= 3 ? 'North Foot Over Bridge' : c.position <= 7 ? 'Central Main FOB' : 'South Foot Over Bridge',
-    escalatorProximityMeters: Math.round(c.position * 24)
+    position: c.positionFromEngine,
+    platformAlignment: c.positionFromEngine <= 3 ? 'Front of Platform' : c.positionFromEngine <= 6 ? 'Center of Platform' : 'Rear of Platform',
+    nearestFob: c.positionFromEngine <= 3 ? 'North Foot Over Bridge' : c.positionFromEngine <= 6 ? 'Central Main FOB' : 'South Foot Over Bridge',
+    escalatorProximityMeters: Math.round(c.positionFromEngine * 22)
   }));
 
   res.json({
     success: true,
     data: {
-      trainNumber: matched.trainNumber,
-      trainName: matched.trainName,
-      currentStation: matched.currentLocation.stationName,
-      platform: matched.currentLocation.stationCode === 'MMCT' ? '1' : '16',
+      trainNumber,
+      trainName: train.trainName,
+      currentStation: stationCode,
+      platform: '1',
       positions
     },
     meta: {
       traceId: `plat-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 1,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'TRAIN_PLATFORM_POSITION'
     }
   });
 });
 
-// 7. Train Autocomplete (GET /v1/trains/search)
-app.get('/trains/search', (req, res) => {
+// 6. Train Autocomplete & Search (GET /v1/trains/search)
+app.get('/trains/search', async (req, res) => {
+  const reqStart = Date.now();
   const query = ((req.query.query as string) || '').toLowerCase().trim();
-  const results = trainsData
-    .filter(t => t.trainNumber.toLowerCase().includes(query) || t.trainName.toLowerCase().includes(query))
-    .map(t => ({
-      trainNumber: t.trainNumber,
-      trainName: t.trainName,
-      origin: t.origin,
-      destination: t.destination,
-      category: t.category
-    }));
+  const results = demoAdapter.searchTrains(query);
 
   res.json({
     success: true,
     data: results,
-    meta: { traceId: `search-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    meta: {
+      traceId: `search-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      executionTimeMs: Date.now() - reqStart,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
+      endpointId: 'TRAIN_SEARCH'
+    }
   });
 });
 
-// 8. Train Directory (GET /v1/trains)
+// 7. Train Directory (GET /v1/trains)
 app.get('/trains', (req, res) => {
   const category = (req.query.category as string) || '';
-  const filtered = category ? trainsData.filter(t => t.category.toLowerCase().includes(category.toLowerCase())) : trainsData;
+  const filtered = demoAdapter.getTrainDirectory(category);
 
   res.json({
     success: true,
-    data: filtered.map(t => ({
-      trainNumber: t.trainNumber,
-      trainName: t.trainName,
-      category: t.category,
-      speedType: t.speedType,
-      origin: t.origin,
-      destination: t.destination,
-      operatingDays: t.operatingDays
-    })),
-    meta: { traceId: `dir-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    data: filtered,
+    meta: {
+      traceId: `dir-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      executionTimeMs: 1,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel
+    }
   });
 });
 
-// 9. Categories & Speed Types & Reference Endpoints
+// 8. Categories & Speed Types & Reference Endpoints
 app.get('/trains/categories', (req, res) => {
+  const categories = Array.from(new Set(trainsData.map(t => t.category)));
   res.json({
     success: true,
-    data: ['Vande Bharat Express', 'Rajdhani Express', 'Shatabdi Express', 'Tejas Express', 'Duronto Express', 'Superfast Express', 'Mail/Express', 'Suburban EMU'],
-    meta: { traceId: `cat-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    data: categories.length > 0 ? categories : ['Vande Bharat Express', 'Rajdhani Express', 'Shatabdi Express', 'Duronto Express', 'Superfast Express'],
+    meta: { traceId: `cat-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel }
   });
 });
 
@@ -461,32 +346,42 @@ app.get('/trains/speed-types', (req, res) => {
   res.json({
     success: true,
     data: [
-      { type: 'Semi-High Speed', maxKmph: 160, priority: 1 },
-      { type: 'Superfast Premium', maxKmph: 130, priority: 2 },
-      { type: 'Express', maxKmph: 110, priority: 3 },
-      { type: 'Passenger Commuter', maxKmph: 80, priority: 4 }
+      { type: 'Semi-High Speed (160 km/h)', maxKmph: 160, priority: 1 },
+      { type: 'Superfast (130 km/h)', maxKmph: 130, priority: 2 },
+      { type: 'Superfast (120 km/h)', maxKmph: 120, priority: 3 },
+      { type: 'Express (110 km/h)', maxKmph: 110, priority: 4 },
+      { type: 'Commuter Local (80 km/h)', maxKmph: 80, priority: 5 }
     ],
-    meta: { traceId: `spd-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    meta: { traceId: `spd-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel }
   });
 });
 
 app.get('/trains/prs', (req, res) => {
   res.json({
     success: true,
-    data: trainsData.map(t => ({ trainNumber: t.trainNumber, trainName: t.trainName, prsQuotaPool: 'Standard Northern/Western PRS Pool', hasTatkal: true })),
-    meta: { traceId: `prs-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    data: trainsData.slice(0, 50).map(t => ({
+      trainNumber: t.trainNumber,
+      trainName: t.trainName,
+      prsQuotaPool: 'Standard Northern/Western PRS Pool',
+      hasTatkal: true
+    })),
+    meta: { traceId: `prs-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel }
   });
 });
 
 app.get('/trains/ntes', (req, res) => {
   res.json({
     success: true,
-    data: trainsData.map(t => ({ trainNumber: t.trainNumber, ntesTrackingStatus: 'Active GPS Feed', reportingStation: t.currentLocation.stationCode })),
-    meta: { traceId: `ntes-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    data: trainsData.slice(0, 50).map(t => ({
+      trainNumber: t.trainNumber,
+      ntesTrackingStatus: 'Active Local Telemetry Feed',
+      reportingStation: t.currentLocation.stationCode
+    })),
+    meta: { traceId: `ntes-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel }
   });
 });
 
-// Compressed feeds (base64 gzip delta simulation with metadata)
+// Compressed feeds
 app.get('/trains/compressed', (req, res) => {
   const rawString = JSON.stringify(trainsData.map(t => [t.trainNumber, t.trainName, t.category]));
   const compressedBase64 = Buffer.from(rawString).toString('base64');
@@ -498,7 +393,7 @@ app.get('/trains/compressed', (req, res) => {
       recordCount: trainsData.length,
       payload: compressedBase64
     },
-    meta: { traceId: `cmp-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    meta: { traceId: `cmp-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel }
   });
 });
 
@@ -511,7 +406,7 @@ app.get('/trains/prs/compressed', (req, res) => {
       checksum: 'sha256-a192c4',
       payload: Buffer.from(JSON.stringify(prsData)).toString('base64')
     },
-    meta: { traceId: `cmpprs-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    meta: { traceId: `cmpprs-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel }
   });
 });
 
@@ -523,10 +418,55 @@ app.get('/trains/kvs', (req, res) => {
   res.json({
     success: true,
     data: kvMap,
-    meta: { traceId: `kvs-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'SIMULATED_DEMO_DATA' as DataSourceLabel }
+    meta: { traceId: `kvs-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel }
+  });
+});
+
+// Train Details (GET /v1/trains/:number)
+app.get('/trains/:number', async (req, res) => {
+  const reqStart = Date.now();
+  const trainNumber = req.params.number.trim();
+  const cacheKey = `train_details_${trainNumber}`;
+
+  const cached = quotaManager.getCached<TrainDetail>(cacheKey);
+  if (cached.hit && cached.data) {
+    return res.json({
+      success: true,
+      data: cached.data,
+      meta: {
+        traceId: `cache-${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        executionTimeMs: 1,
+        source: 'LOCAL_CACHE' as DataSourceLabel,
+        isCached: true,
+        endpointId: 'TRAIN_DETAILS'
+      }
+    });
+  }
+
+  const result = demoAdapter.getTrainDetail(trainNumber);
+  if (!result) {
+    return res.status(404).json({
+      success: false,
+      error: { code: 'TRAIN_NOT_FOUND', message: `Train number ${trainNumber} not found.` },
+      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
+    });
+  }
+
+  quotaManager.setCached(cacheKey, result.detail, 86400);
+  res.json({
+    success: true,
+    data: result.detail,
+    meta: {
+      traceId: `demo-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      executionTimeMs: Date.now() - reqStart,
+      source: result.source,
+      endpointId: 'TRAIN_DETAILS'
+    }
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`[Service: Train Intelligence] running on port ${PORT}`);
+  console.log(`[Service: Train Intelligence] running offline on port ${PORT}`);
 });

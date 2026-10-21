@@ -83,3 +83,30 @@ This document explicitly maps the theoretical principles of **Distributed Comput
 - **RailSync Implementation**:
   - Every microservice exposes an independent `/health` endpoint returning uptime, port, processed request count, and failure flags.
   - The API Gateway queries `/health` across all nodes every 3 seconds to maintain cluster-wide metrics (`ServiceHealthRepository` in `data/db/index.ts`).
+
+---
+
+## 10. Genuine Microservice IPC vs. Simulated Upstream Provider
+- **DCS Principle**: A distributed system's architectural validity lies in the independent lifecycle, separate address space, socket-based communication, and failure isolation of its internal processing nodes—NOT whether it reaches out across the public internet to a third-party SaaS API.
+- **RailSync Implementation**:
+  - **Genuine Inter-Service HTTP IPC (Ports 4000–4004)**:
+    - The Gateway (`services/gateway/server.ts`, port `4000`) and the 4 domain services (`train-intel`: `4001`, `journey-station`: `4002`, `reservation`: `4003`, `analytics`: `4004`) execute in completely independent Node.js processes.
+    - All inter-service communication utilizes real TCP loopback sockets over HTTP/1.1 (`fetch('http://localhost:400X/...')`), serializing requests into JSON byte buffers, utilizing OS networking stacks, obeying timeouts via `AbortController`, and handling real HTTP error codes (e.g., 503 Service Unavailable, 404 Not Found, 408 Timeout).
+    - Fault injection in `DistributedMonitorView` targets this internal network fabric, proving genuine partial failure and recovery.
+  - **Simulated External Provider Emulation (`DemoRailwayAdapter`)**:
+    - To guarantee 100% offline reliability, zero external quota exhaustion, and deterministic laboratory conditions, external railway API calls (to `api.railradar.in`) are intercepted and fulfilled locally by `DemoRailwayAdapter`.
+    - The adapter queries comprehensive local JSON fixtures (134 trains, 171 stations, 134 routes, 25 coach layouts, 35 platform alignments, 30 PNRs, 58 suburban, 26 freight) and deterministic simulation engines.
+    - The API Registry Test Console (`/api-registry`) even simulates upstream HTTP status codes (200, 404, 429, 503), trace IDs, and network latencies locally, allowing students and evaluators to study upstream error handling without external dependencies.
+
+---
+
+## 11. Data Provenance & Honest Transparency
+- **DCS Principle**: In distributed data processing, data origin and transformation lineage must be transparently tracked and displayed so clients can verify trustworthiness.
+- **RailSync Implementation**:
+  - Every single API response and frontend view displays strict, honest provenance badges:
+    - `LOCAL_JSON_FIXTURE`: Static timetable, station, coach, or platform catalog data loaded from local fixtures.
+    - `LOCAL_SIMULATION`: Dynamically computed results (e.g., deterministic train live position interpolation, PNR confirmation prediction, refund calculations).
+    - `SIMULATED_PROVIDER_RESPONSE`: Mock upstream railway provider response with simulated headers, trace IDs, and latencies.
+    - `LOCAL_CACHE`: Served from the in-memory TTL cache with zero computational overhead.
+    - `UNAVAILABLE`: Service degraded or endpoint unreachable.
+  - RailSync never masks offline data with misleading labels like `LIVE_PROVIDER_DATA`.

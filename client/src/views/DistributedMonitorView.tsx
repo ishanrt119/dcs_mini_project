@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Api } from '../api';
 import { SourceBadge } from '../components/SourceBadge';
 import { ServiceHealthMetric } from '../types';
@@ -25,13 +25,8 @@ export const DistributedMonitorView: React.FC = () => {
   const [rpcResponse, setRpcResponse] = useState<any>(null);
   const [rpcLoading, setRpcLoading] = useState(false);
 
-  useEffect(() => {
-    fetchHealth();
-    const interval = setInterval(fetchHealth, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   const fetchHealth = async () => {
+    setLoading(true);
     try {
       const resp = await Api.getClusterHealth();
       if (resp.success && resp.data) {
@@ -39,6 +34,8 @@ export const DistributedMonitorView: React.FC = () => {
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -106,17 +103,31 @@ export const DistributedMonitorView: React.FC = () => {
             <span className="text-slate-200 font-semibold">Cluster: {clusterData?.clusterStatus || 'ONLINE'}</span>
           </div>
           <button
-            onClick={() => fetchHealth()}
-            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+            onClick={fetchHealth}
+            disabled={loading}
+            className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs transition-all"
             title="Poll cluster health"
           >
-            <RefreshCw className="w-4 h-4" />
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            <span>{loading ? 'Polling...' : clusterData ? 'Refresh Health' : 'Load Cluster Health'}</span>
           </button>
         </div>
       </div>
 
+      {!clusterData && !loading && (
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-16 text-center space-y-2">
+          <Activity className="w-10 h-10 text-slate-600 mx-auto mb-2" />
+          <h3 className="text-sm font-semibold text-white">Cluster Health Not Loaded</h3>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            Click <strong className="text-cyan-400">Load Cluster Health</strong> above to fetch live service node metrics and fault status.
+          </p>
+        </div>
+      )}
+
       {/* Cluster Nodes Grid */}
-      <div className="space-y-4">
+      {clusterData && (
+        <>
+          <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-bold text-white flex items-center gap-2">
             <Server className="w-4 h-4 text-cyan-400" />
@@ -301,6 +312,8 @@ export const DistributedMonitorView: React.FC = () => {
           </div>
         )}
       </div>
+        </>
+      )}
     </div>
   );
 };

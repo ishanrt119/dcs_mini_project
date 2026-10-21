@@ -1,34 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Api } from '../api';
 import { StationSummary } from '../types';
 import { SourceBadge } from '../components/SourceBadge';
-import { Building2, Search, MapPin, Clock, Train } from 'lucide-react';
+import { Building2, Search, MapPin, Clock, Train, AlertCircle, Loader2 } from 'lucide-react';
 
 interface Props {
   onSelectTrain: (trainNumber: string) => void;
 }
 
 export const StationExplorerView: React.FC<Props> = ({ onSelectTrain }) => {
-  const [stationCode, setStationCode] = useState('NDLS');
+  const [searchInput, setSearchInput] = useState('NDLS');
   const [stationDetails, setStationDetails] = useState<StationSummary | null>(null);
   const [schedule, setSchedule] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    fetchStationData(stationCode);
-  }, [stationCode]);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchStationData = async (code: string) => {
+    if (!code.trim()) return;
     setLoading(true);
+    setError(null);
     try {
       const [detailResp, schedResp] = await Promise.all([
-        Api.getStationDetails(code),
-        Api.getStationSchedule(code)
+        Api.getStationDetails(code.trim()),
+        Api.getStationSchedule(code.trim())
       ]);
-      if (detailResp.success) setStationDetails(detailResp.data);
+      if (detailResp.success && detailResp.data) {
+        setStationDetails(detailResp.data);
+      } else {
+        setError(`Station #${code} not found in database.`);
+      }
       if (schedResp.success) setSchedule(schedResp.data?.schedule || []);
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      setError(e.message || 'Error fetching station telemetry');
     } finally {
       setLoading(false);
     }
@@ -36,7 +39,7 @@ export const StationExplorerView: React.FC<Props> = ({ onSelectTrain }) => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (stationCode.trim()) fetchStationData(stationCode.trim());
+    if (searchInput.trim()) fetchStationData(searchInput.trim());
   };
 
   return (
@@ -57,18 +60,40 @@ export const StationExplorerView: React.FC<Props> = ({ onSelectTrain }) => {
           <div className="relative flex-1 max-w-xs">
             <input
               type="text"
-              value={stationCode}
-              onChange={e => setStationCode(e.target.value.toUpperCase())}
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value.toUpperCase())}
               placeholder="Station code (e.g. NDLS, MMCT, CNB)..."
               className="w-full bg-slate-950 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-xs text-white font-mono uppercase focus:border-cyan-500 focus:outline-none"
             />
             <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
           </div>
-          <button type="submit" className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs">
-            Inspect Station
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 shadow-sm"
+          >
+            {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Building2 className="w-3.5 h-3.5" />}
+            <span>{loading ? 'Inspecting...' : 'Inspect Station'}</span>
           </button>
         </form>
+
+        {error && (
+          <div className="mt-3 p-3 bg-red-950/40 border border-red-800/50 rounded-xl text-red-300 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+            <span>{error}</span>
+          </div>
+        )}
       </div>
+
+      {!stationDetails && !loading && !error && (
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-400 space-y-2">
+          <Building2 className="w-10 h-10 text-slate-600 mx-auto mb-2" />
+          <h3 className="text-sm font-semibold text-white">No Station Selected</h3>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            Enter a station code above (e.g. NDLS, MMCT, CNB, BSB) and click <strong className="text-cyan-400">Inspect Station</strong> to view facilities, zone mapping, and daily schedules.
+          </p>
+        </div>
+      )}
 
       {stationDetails && (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">

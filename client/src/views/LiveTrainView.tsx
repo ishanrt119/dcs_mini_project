@@ -16,7 +16,8 @@ import {
   TrendingDown,
   TrendingUp,
   Minus,
-  AlertTriangle
+  AlertTriangle,
+  Loader2
 } from 'lucide-react';
 
 interface Props {
@@ -24,7 +25,7 @@ interface Props {
 }
 
 export const LiveTrainView: React.FC<Props> = ({ initialTrainNumber = '12951' }) => {
-  const [trainNumber, setTrainNumber] = useState(initialTrainNumber);
+  const [searchInput, setSearchInput] = useState(initialTrainNumber);
   const [journeyDate, setJourneyDate] = useState(new Date().toISOString().split('T')[0]);
   const [authoritative, setAuthoritative] = useState(false);
   const [statusData, setStatusData] = useState<LiveTrainStatus | null>(null);
@@ -35,20 +36,21 @@ export const LiveTrainView: React.FC<Props> = ({ initialTrainNumber = '12951' })
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchLiveStatus(trainNumber);
-  }, [trainNumber]);
+    setSearchInput(initialTrainNumber);
+  }, [initialTrainNumber]);
 
   const fetchLiveStatus = async (num: string, bypassCache: boolean = false) => {
+    if (!num.trim()) return;
     setLoading(true);
     setError(null);
     try {
-      const resp = await Api.getLiveStatus(num, { date: journeyDate, authoritative: bypassCache });
+      const resp = await Api.getLiveStatus(num.trim(), { date: journeyDate, authoritative: bypassCache });
       if (resp.success && resp.data) {
         setStatusData(resp.data);
         setMeta(resp.meta);
 
         // Fetch delay trend in parallel
-        const trendResp = await Api.getDelayTrend(num);
+        const trendResp = await Api.getDelayTrend(num.trim());
         if (trendResp.success) {
           setTrend(trendResp.data);
         }
@@ -56,7 +58,7 @@ export const LiveTrainView: React.FC<Props> = ({ initialTrainNumber = '12951' })
         // Check if train is saved
         const savedList = await Api.getSavedTrains();
         if (savedList.success && savedList.data) {
-          setIsSaved(savedList.data.some((t: any) => t.train_number === num));
+          setIsSaved(savedList.data.some((t: any) => t.train_number === num.trim()));
         }
       } else {
         setError(resp.error?.message || 'Unable to retrieve live status for specified train.');
@@ -81,8 +83,8 @@ export const LiveTrainView: React.FC<Props> = ({ initialTrainNumber = '12951' })
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (trainNumber.trim()) {
-      fetchLiveStatus(trainNumber.trim(), authoritative);
+    if (searchInput.trim()) {
+      fetchLiveStatus(searchInput.trim(), authoritative);
     }
   };
 
@@ -98,9 +100,9 @@ export const LiveTrainView: React.FC<Props> = ({ initialTrainNumber = '12951' })
             <div className="relative">
               <input
                 type="text"
-                value={trainNumber}
-                onChange={e => setTrainNumber(e.target.value)}
-                placeholder="Enter 5-digit number (e.g. 12951, 22436)"
+                value={searchInput}
+                onChange={e => setSearchInput(e.target.value)}
+                placeholder="Enter 5-digit number (e.g. 12951, 12952, 22436)"
                 className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white font-mono focus:border-cyan-500 focus:outline-none"
               />
               <Train className="w-4 h-4 text-slate-500 absolute right-3 top-2.5" />
@@ -137,7 +139,7 @@ export const LiveTrainView: React.FC<Props> = ({ initialTrainNumber = '12951' })
               disabled={loading}
               className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs shadow-md shadow-cyan-950 transition-all flex items-center gap-2"
             >
-              <Radio className="w-3.5 h-3.5" />
+              {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Radio className="w-3.5 h-3.5" />}
               <span>{loading ? 'Tracking...' : 'Query Live Status'}</span>
             </button>
           </div>
@@ -155,6 +157,16 @@ export const LiveTrainView: React.FC<Props> = ({ initialTrainNumber = '12951' })
         <div className="p-4 rounded-xl bg-rose-950/50 border border-rose-800 text-rose-200 text-xs flex items-center gap-3">
           <AlertTriangle className="w-5 h-5 shrink-0" />
           <span>{error}</span>
+        </div>
+      )}
+
+      {!statusData && !loading && !error && (
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-400 space-y-2">
+          <Train className="w-10 h-10 text-slate-600 mx-auto mb-2" />
+          <h3 className="text-sm font-semibold text-white">No Train Tracked Yet</h3>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            Enter a 5-digit train number above and click <strong className="text-cyan-400">Query Live Status</strong> to fetch live GPS location, halts, and delay telemetry.
+          </p>
         </div>
       )}
 

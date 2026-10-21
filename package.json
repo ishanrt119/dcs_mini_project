@@ -4,8 +4,8 @@
   "description": "RailSync - Distributed Railway Intelligence and Monitoring Platform",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -n \"GATEWAY,TRAIN,JOURNEY,RESERVE,ANALYTICS,CLIENT\" -c \"cyan,green,yellow,magenta,blue,white\" \"npx tsx services/gateway/server.ts\" \"npx tsx services/train-intel/server.ts\" \"npx tsx services/journey-station/server.ts\" \"npx tsx services/reservation/server.ts\" \"npx tsx services/analytics/server.ts\" \"npm --prefix client run dev\"",
-    "dev:backend": "concurrently -k -n \"GATEWAY,TRAIN,JOURNEY,RESERVE,ANALYTICS\" -c \"cyan,green,yellow,magenta,blue\" \"npx tsx services/gateway/server.ts\" \"npx tsx services/train-intel/server.ts\" \"npx tsx services/journey-station/server.ts\" \"npx tsx services/reservation/server.ts\" \"npx tsx services/analytics/server.ts\"",
+    "dev": "concurrently -k -n \"GATEWAY,TRAIN,JOURNEY,RESERVE,ANALYTICS,CLIENT\" -c \"cyan,green,yellow,magenta,blue,white\" \"npx tsx watch services/gateway/server.ts\" \"npx tsx watch services/train-intel/server.ts\" \"npx tsx watch services/journey-station/server.ts\" \"npx tsx watch services/reservation/server.ts\" \"npx tsx watch services/analytics/server.ts\" \"npm --prefix client run dev\"",
+    "dev:backend": "concurrently -k -n \"GATEWAY,TRAIN,JOURNEY,RESERVE,ANALYTICS\" -c \"cyan,green,yellow,magenta,blue\" \"npx tsx watch services/gateway/server.ts\" \"npx tsx watch services/train-intel/server.ts\" \"npx tsx watch services/journey-station/server.ts\" \"npx tsx watch services/reservation/server.ts\" \"npx tsx watch services/analytics/server.ts\"",
     "build": "npm --prefix client run build",
     "test": "npx tsx tests/smoke-test.ts",
     "test:smoke": "npx tsx tests/smoke-test.ts",

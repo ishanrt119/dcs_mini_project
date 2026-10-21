@@ -1,11 +1,15 @@
 // Client-side TypeScript Types
 
 export type DataSourceLabel =
-  | 'LIVE_PROVIDER_DATA'
-  | 'CACHED_PROVIDER_DATA'
+  | 'SIMULATED_PROVIDER_RESPONSE'
+  | 'LOCAL_JSON_FIXTURE'
+  | 'LOCAL_SIMULATION'
+  | 'LOCAL_CACHE'
   | 'LOCAL_HISTORICAL_OBSERVATION'
   | 'SIMULATED_DEMO_DATA'
-  | 'UNAVAILABLE';
+  | 'CACHED_PROVIDER_DATA'
+  | 'UNAVAILABLE'
+  | 'LIVE_PROVIDER_DATA';
 
 export interface ApiResponse<T> {
   success: boolean;
@@ -40,6 +44,10 @@ export interface QuotaStatus {
   totalCacheHits: number;
   totalCacheMisses: number;
   apiKeyConfigured?: boolean;
+  providerRemainingQuota?: number;
+  actualOutboundCalls?: number;
+  mockProviderCalls?: number;
+  providerAccessDisabled?: boolean;
 }
 
 export interface HaltInfo {

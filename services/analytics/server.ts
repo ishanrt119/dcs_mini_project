@@ -24,6 +24,42 @@ const trainsData: any[] = JSON.parse(fs.readFileSync(path.resolve(process.cwd(),
 const freightData: any[] = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'data/fixtures/freight.json'), 'utf-8'));
 const stationsData: any[] = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'data/fixtures/stations.json'), 'utf-8'));
 
+// Seed pre-generated incidents and delay history into SQLite if empty
+try {
+  const disruptionsPath = path.resolve(process.cwd(), 'data/fixtures/disruptions.json');
+  if (fs.existsSync(disruptionsPath)) {
+    const disruptions: any[] = JSON.parse(fs.readFileSync(disruptionsPath, 'utf-8'));
+    disruptions.forEach(d => {
+      IncidentsRepository.record({
+        incidentId: d.incidentId,
+        trainNumber: d.trainNumber,
+        stationCode: d.stationCode,
+        severity: d.severity,
+        type: d.type,
+        description: d.description,
+        estimatedDelayMinutes: d.estimatedDelayMinutes,
+        status: d.status
+      });
+    });
+  }
+
+  const delayHistoryPath = path.resolve(process.cwd(), 'data/fixtures/delay-history.json');
+  if (fs.existsSync(delayHistoryPath)) {
+    const delayHistory: any[] = JSON.parse(fs.readFileSync(delayHistoryPath, 'utf-8'));
+    delayHistory.slice(0, 100).forEach(dh => {
+      SnapshotsRepository.save(
+        dh.trainNumber,
+        dh.observedDelayMinutes,
+        dh.stationCode,
+        dh.speedKmph,
+        dh.status
+      );
+    });
+  }
+} catch (e) {
+  console.warn('[Analytics] Fixture seeding notice:', e);
+}
+
 // Initialize RPC Server
 const rpcServer = new RpcServer();
 

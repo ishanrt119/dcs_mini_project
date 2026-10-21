@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Api } from '../api';
 import { SourceBadge } from '../components/SourceBadge';
 import { LeafletTrainMap } from '../components/LeafletTrainMap';
-import { MapPin, Train, Gauge, Clock, ChevronRight } from 'lucide-react';
+import { MapPin, Train, Gauge, Clock, ChevronRight, Loader2, Radio } from 'lucide-react';
 
 interface Props {
   onSelectTrain: (trainNumber: string) => void;
@@ -11,11 +11,8 @@ interface Props {
 export const NetworkMapView: React.FC<Props> = ({ onSelectTrain }) => {
   const [trains, setTrains] = useState<any[]>([]);
   const [selectedTrain, setSelectedTrain] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchMapFeed();
-  }, []);
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const fetchMapFeed = async () => {
     setLoading(true);
@@ -29,8 +26,14 @@ export const NetworkMapView: React.FC<Props> = ({ onSelectTrain }) => {
       console.error(e);
     } finally {
       setLoading(false);
+      setLoaded(true);
     }
   };
+
+  // Automatically load the map feed when the view mounts
+  useEffect(() => {
+    fetchMapFeed();
+  }, []);
 
   return (
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
@@ -40,15 +43,38 @@ export const NetworkMapView: React.FC<Props> = ({ onSelectTrain }) => {
             <MapPin className="w-6 h-6 text-cyan-400" />
             <span>National Railway Network Map Feed</span>
           </h1>
-          <p className="text-xs text-slate-400 mt-1">Geospatial telemetry cluster visualizing operating trains and track corridors.</p>
+          <p className="text-xs text-slate-400 mt-1">Geospatial telemetry cluster visualizing operating trains and track corridors across India.</p>
         </div>
-        <SourceBadge source="SIMULATED_DEMO_DATA" />
+        <div className="flex items-center gap-3">
+          <SourceBadge source="LIVE_PROVIDER_DATA" />
+          <button
+            onClick={fetchMapFeed}
+            disabled={loading}
+            className="px-4 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 transition-all shadow-sm"
+          >
+            {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <MapPin className="w-3.5 h-3.5" />}
+            <span>{loading ? 'Refreshing...' : 'Refresh Feed'}</span>
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Map Area */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-4 relative">
+          {loading && !loaded && (
+            <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm z-20 rounded-xl flex flex-col items-center justify-center gap-3">
+              <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+              <span className="text-xs text-slate-300 font-medium">Loading geospatial train telemetry...</span>
+            </div>
+          )}
+
           <LeafletTrainMap
+            allTrains={trains}
+            selectedTrainNumber={selectedTrain?.trainNumber}
+            onSelectTrain={trainNum => {
+              const matched = trains.find(t => t.trainNumber === trainNum);
+              if (matched) setSelectedTrain(matched);
+            }}
             coordinates={selectedTrain?.routeGeometry || []}
             currentPosition={
               selectedTrain

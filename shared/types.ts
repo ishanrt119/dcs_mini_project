@@ -1,11 +1,15 @@
 // RailSync Distributed Railway Intelligence - Shared Types
 
 export type DataSourceLabel =
-  | 'LIVE_PROVIDER_DATA'
-  | 'CACHED_PROVIDER_DATA'
+  | 'SIMULATED_PROVIDER_RESPONSE'
+  | 'LOCAL_JSON_FIXTURE'
+  | 'LOCAL_SIMULATION'
+  | 'LOCAL_CACHE'
   | 'LOCAL_HISTORICAL_OBSERVATION'
   | 'SIMULATED_DEMO_DATA'
-  | 'UNAVAILABLE';
+  | 'CACHED_PROVIDER_DATA'
+  | 'UNAVAILABLE'
+  | 'LIVE_PROVIDER_DATA';
 
 export interface ApiResponseMeta {
   traceId: string;
@@ -43,6 +47,11 @@ export interface QuotaStatus {
   cacheHitRatio: number;
   totalCacheHits: number;
   totalCacheMisses: number;
+  providerRemainingQuota?: number;
+  actualOutboundCalls?: number;
+  mockProviderCalls?: number;
+  providerAccessDisabled?: boolean;
+  apiKeyConfigured?: boolean;
 }
 
 // ------------------- Train Intelligence Types -------------------

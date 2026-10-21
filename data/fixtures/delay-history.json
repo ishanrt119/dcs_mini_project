@@ -1,0 +1,2102 @@
+[
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 18,
+    "stationCode": "ST",
+    "speedKmph": 95,
+    "status": "Delayed by 18m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 19,
+    "stationCode": "ST",
+    "speedKmph": 95,
+    "status": "Delayed by 19m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 7,
+    "stationCode": "ST",
+    "speedKmph": 95,
+    "status": "Delayed by 7m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ST",
+    "speedKmph": 95,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ST",
+    "speedKmph": 95,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 1,
+    "stationCode": "ST",
+    "speedKmph": 95,
+    "status": "Delayed by 1m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 15,
+    "stationCode": "ST",
+    "speedKmph": 95,
+    "status": "Delayed by 15m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 16,
+    "stationCode": "RTM",
+    "speedKmph": 96,
+    "status": "Delayed by 16m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 4,
+    "stationCode": "RTM",
+    "speedKmph": 96,
+    "status": "Delayed by 4m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "RTM",
+    "speedKmph": 96,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "RTM",
+    "speedKmph": 96,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "RTM",
+    "speedKmph": 96,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "RTM",
+    "speedKmph": 96,
+    "status": "Delayed by 12m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "RTM",
+    "speedKmph": 96,
+    "status": "Delayed by 17m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "ST",
+    "speedKmph": 97,
+    "status": "Delayed by 2m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ST",
+    "speedKmph": 97,
+    "status": "On Time",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ST",
+    "speedKmph": 97,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ST",
+    "speedKmph": 97,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "ST",
+    "speedKmph": 97,
+    "status": "Delayed by 10m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 15,
+    "stationCode": "ST",
+    "speedKmph": 97,
+    "status": "Delayed by 15m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 6,
+    "stationCode": "ST",
+    "speedKmph": 97,
+    "status": "Delayed by 6m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 15,
+    "stationCode": "BRC",
+    "speedKmph": 98,
+    "status": "Delayed by 15m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "BRC",
+    "speedKmph": 98,
+    "status": "Delayed by 12m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 22,
+    "stationCode": "BRC",
+    "speedKmph": 98,
+    "status": "Delayed by 22m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 36,
+    "stationCode": "BRC",
+    "speedKmph": 98,
+    "status": "Delayed by 36m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 41,
+    "stationCode": "BRC",
+    "speedKmph": 98,
+    "status": "Delayed by 41m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 32,
+    "stationCode": "BRC",
+    "speedKmph": 98,
+    "status": "Delayed by 32m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 18,
+    "stationCode": "BRC",
+    "speedKmph": 98,
+    "status": "Delayed by 18m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 13,
+    "stationCode": "GMO",
+    "speedKmph": 99,
+    "status": "Delayed by 13m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "GMO",
+    "speedKmph": 99,
+    "status": "Delayed by 14m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "GMO",
+    "speedKmph": 99,
+    "status": "Delayed by 2m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GMO",
+    "speedKmph": 99,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GMO",
+    "speedKmph": 99,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GMO",
+    "speedKmph": 99,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "GMO",
+    "speedKmph": 99,
+    "status": "Delayed by 10m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 16,
+    "stationCode": "DDU",
+    "speedKmph": 100,
+    "status": "Delayed by 16m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 4,
+    "stationCode": "DDU",
+    "speedKmph": 100,
+    "status": "Delayed by 4m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "DDU",
+    "speedKmph": 100,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "DDU",
+    "speedKmph": 100,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "DDU",
+    "speedKmph": 100,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "DDU",
+    "speedKmph": 100,
+    "status": "Delayed by 12m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "DDU",
+    "speedKmph": 100,
+    "status": "Delayed by 17m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 33,
+    "stationCode": "PNBE",
+    "speedKmph": 101,
+    "status": "Delayed by 33m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 43,
+    "stationCode": "PNBE",
+    "speedKmph": 101,
+    "status": "Delayed by 43m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 57,
+    "stationCode": "PNBE",
+    "speedKmph": 101,
+    "status": "Delayed by 57m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 62,
+    "stationCode": "PNBE",
+    "speedKmph": 101,
+    "status": "Delayed by 62m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 53,
+    "stationCode": "PNBE",
+    "speedKmph": 101,
+    "status": "Delayed by 53m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 39,
+    "stationCode": "PNBE",
+    "speedKmph": 101,
+    "status": "Delayed by 39m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 32,
+    "stationCode": "PNBE",
+    "speedKmph": 101,
+    "status": "Delayed by 32m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "PRYJ",
+    "speedKmph": 102,
+    "status": "On Time",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "PRYJ",
+    "speedKmph": 102,
+    "status": "Delayed by 12m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "PRYJ",
+    "speedKmph": 102,
+    "status": "Delayed by 17m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 8,
+    "stationCode": "PRYJ",
+    "speedKmph": 102,
+    "status": "Delayed by 8m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "PRYJ",
+    "speedKmph": 102,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "PRYJ",
+    "speedKmph": 102,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "PRYJ",
+    "speedKmph": 102,
+    "status": "On Time",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 13,
+    "stationCode": "ET",
+    "speedKmph": 103,
+    "status": "Delayed by 13m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "ET",
+    "speedKmph": 103,
+    "status": "Delayed by 14m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "ET",
+    "speedKmph": 103,
+    "status": "Delayed by 2m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ET",
+    "speedKmph": 103,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ET",
+    "speedKmph": 103,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ET",
+    "speedKmph": 103,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "ET",
+    "speedKmph": 103,
+    "status": "Delayed by 10m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 82,
+    "stationCode": "BPL",
+    "speedKmph": 104,
+    "status": "Delayed by 82m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 70,
+    "stationCode": "BPL",
+    "speedKmph": 104,
+    "status": "Delayed by 70m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 57,
+    "stationCode": "BPL",
+    "speedKmph": 104,
+    "status": "Delayed by 57m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 54,
+    "stationCode": "BPL",
+    "speedKmph": 104,
+    "status": "Delayed by 54m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 64,
+    "stationCode": "BPL",
+    "speedKmph": 104,
+    "status": "Delayed by 64m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 78,
+    "stationCode": "BPL",
+    "speedKmph": 104,
+    "status": "Delayed by 78m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 83,
+    "stationCode": "BPL",
+    "speedKmph": 104,
+    "status": "Delayed by 83m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 13,
+    "stationCode": "CAN",
+    "speedKmph": 105,
+    "status": "Delayed by 13m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "CAN",
+    "speedKmph": 105,
+    "status": "Delayed by 14m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "CAN",
+    "speedKmph": 105,
+    "status": "Delayed by 2m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "CAN",
+    "speedKmph": 105,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "CAN",
+    "speedKmph": 105,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "CAN",
+    "speedKmph": 105,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "CAN",
+    "speedKmph": 105,
+    "status": "Delayed by 10m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 16,
+    "stationCode": "PNVL",
+    "speedKmph": 106,
+    "status": "Delayed by 16m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 4,
+    "stationCode": "PNVL",
+    "speedKmph": 106,
+    "status": "Delayed by 4m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "PNVL",
+    "speedKmph": 106,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "PNVL",
+    "speedKmph": 106,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "PNVL",
+    "speedKmph": 106,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "PNVL",
+    "speedKmph": 106,
+    "status": "Delayed by 12m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "PNVL",
+    "speedKmph": 106,
+    "status": "Delayed by 17m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 26,
+    "stationCode": "ET",
+    "speedKmph": 107,
+    "status": "Delayed by 26m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 13,
+    "stationCode": "ET",
+    "speedKmph": 107,
+    "status": "Delayed by 13m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "ET",
+    "speedKmph": 107,
+    "status": "Delayed by 10m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 20,
+    "stationCode": "ET",
+    "speedKmph": 107,
+    "status": "Delayed by 20m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 34,
+    "stationCode": "ET",
+    "speedKmph": 107,
+    "status": "Delayed by 34m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 39,
+    "stationCode": "ET",
+    "speedKmph": 107,
+    "status": "Delayed by 39m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 30,
+    "stationCode": "ET",
+    "speedKmph": 107,
+    "status": "Delayed by 30m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BPL",
+    "speedKmph": 108,
+    "status": "On Time",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BPL",
+    "speedKmph": 108,
+    "status": "On Time",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BPL",
+    "speedKmph": 108,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "BPL",
+    "speedKmph": 108,
+    "status": "Delayed by 12m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "BPL",
+    "speedKmph": 108,
+    "status": "Delayed by 17m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 8,
+    "stationCode": "BPL",
+    "speedKmph": 108,
+    "status": "Delayed by 8m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BPL",
+    "speedKmph": 108,
+    "status": "On Time",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "CNB",
+    "speedKmph": 144,
+    "status": "On Time",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "CNB",
+    "speedKmph": 144,
+    "status": "Delayed by 10m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 15,
+    "stationCode": "CNB",
+    "speedKmph": 144,
+    "status": "Delayed by 15m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 6,
+    "stationCode": "CNB",
+    "speedKmph": 144,
+    "status": "Delayed by 6m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "CNB",
+    "speedKmph": 144,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "CNB",
+    "speedKmph": 144,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "CNB",
+    "speedKmph": 144,
+    "status": "On Time",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 31,
+    "stationCode": "PRYJ",
+    "speedKmph": 145,
+    "status": "Delayed by 31m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 41,
+    "stationCode": "PRYJ",
+    "speedKmph": 145,
+    "status": "Delayed by 41m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 55,
+    "stationCode": "PRYJ",
+    "speedKmph": 145,
+    "status": "Delayed by 55m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 60,
+    "stationCode": "PRYJ",
+    "speedKmph": 145,
+    "status": "Delayed by 60m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 51,
+    "stationCode": "PRYJ",
+    "speedKmph": 145,
+    "status": "Delayed by 51m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 37,
+    "stationCode": "PRYJ",
+    "speedKmph": 145,
+    "status": "Delayed by 37m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 30,
+    "stationCode": "PRYJ",
+    "speedKmph": 145,
+    "status": "Delayed by 30m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 13,
+    "stationCode": "VAPI",
+    "speedKmph": 146,
+    "status": "Delayed by 13m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "VAPI",
+    "speedKmph": 146,
+    "status": "Delayed by 14m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "VAPI",
+    "speedKmph": 146,
+    "status": "Delayed by 2m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "VAPI",
+    "speedKmph": 146,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "VAPI",
+    "speedKmph": 146,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "VAPI",
+    "speedKmph": 146,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "VAPI",
+    "speedKmph": 146,
+    "status": "Delayed by 10m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 16,
+    "stationCode": "BRC",
+    "speedKmph": 147,
+    "status": "Delayed by 16m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 4,
+    "stationCode": "BRC",
+    "speedKmph": 147,
+    "status": "Delayed by 4m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BRC",
+    "speedKmph": 147,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BRC",
+    "speedKmph": 147,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BRC",
+    "speedKmph": 147,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "BRC",
+    "speedKmph": 147,
+    "status": "Delayed by 12m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "BRC",
+    "speedKmph": 147,
+    "status": "Delayed by 17m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 68,
+    "stationCode": "PNVL",
+    "speedKmph": 148,
+    "status": "Delayed by 68m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 55,
+    "stationCode": "PNVL",
+    "speedKmph": 148,
+    "status": "Delayed by 55m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 52,
+    "stationCode": "PNVL",
+    "speedKmph": 148,
+    "status": "Delayed by 52m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 62,
+    "stationCode": "PNVL",
+    "speedKmph": 148,
+    "status": "Delayed by 62m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 76,
+    "stationCode": "PNVL",
+    "speedKmph": 148,
+    "status": "Delayed by 76m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 81,
+    "stationCode": "PNVL",
+    "speedKmph": 148,
+    "status": "Delayed by 81m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 72,
+    "stationCode": "PNVL",
+    "speedKmph": 148,
+    "status": "Delayed by 72m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ROHA",
+    "speedKmph": 149,
+    "status": "On Time",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ROHA",
+    "speedKmph": 149,
+    "status": "On Time",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ROHA",
+    "speedKmph": 149,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "ROHA",
+    "speedKmph": 149,
+    "status": "Delayed by 12m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "ROHA",
+    "speedKmph": 149,
+    "status": "Delayed by 17m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 8,
+    "stationCode": "ROHA",
+    "speedKmph": 149,
+    "status": "Delayed by 8m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "ROHA",
+    "speedKmph": 149,
+    "status": "On Time",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "JTJ",
+    "speedKmph": 150,
+    "status": "Delayed by 10m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 15,
+    "stationCode": "JTJ",
+    "speedKmph": 150,
+    "status": "Delayed by 15m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 6,
+    "stationCode": "JTJ",
+    "speedKmph": 150,
+    "status": "Delayed by 6m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "JTJ",
+    "speedKmph": 150,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "JTJ",
+    "speedKmph": 150,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "JTJ",
+    "speedKmph": 150,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 6,
+    "stationCode": "JTJ",
+    "speedKmph": 150,
+    "status": "Delayed by 6m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 37,
+    "stationCode": "BNC",
+    "speedKmph": 151,
+    "status": "Delayed by 37m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 28,
+    "stationCode": "BNC",
+    "speedKmph": 151,
+    "status": "Delayed by 28m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "BNC",
+    "speedKmph": 151,
+    "status": "Delayed by 14m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 7,
+    "stationCode": "BNC",
+    "speedKmph": 151,
+    "status": "Delayed by 7m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "BNC",
+    "speedKmph": 151,
+    "status": "Delayed by 14m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 28,
+    "stationCode": "BNC",
+    "speedKmph": 151,
+    "status": "Delayed by 28m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 37,
+    "stationCode": "BNC",
+    "speedKmph": 151,
+    "status": "Delayed by 37m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 6,
+    "stationCode": "LDH",
+    "speedKmph": 152,
+    "status": "Delayed by 6m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "LDH",
+    "speedKmph": 152,
+    "status": "On Time",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "LDH",
+    "speedKmph": 152,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "LDH",
+    "speedKmph": 152,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 6,
+    "stationCode": "LDH",
+    "speedKmph": 152,
+    "status": "Delayed by 6m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 15,
+    "stationCode": "LDH",
+    "speedKmph": 152,
+    "status": "Delayed by 15m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "LDH",
+    "speedKmph": 152,
+    "status": "Delayed by 10m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "LDH",
+    "speedKmph": 153,
+    "status": "Delayed by 2m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 15,
+    "stationCode": "LDH",
+    "speedKmph": 153,
+    "status": "Delayed by 15m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 16,
+    "stationCode": "LDH",
+    "speedKmph": 153,
+    "status": "Delayed by 16m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 4,
+    "stationCode": "LDH",
+    "speedKmph": 153,
+    "status": "Delayed by 4m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "LDH",
+    "speedKmph": 153,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "LDH",
+    "speedKmph": 153,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "LDH",
+    "speedKmph": 153,
+    "status": "On Time",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 45,
+    "stationCode": "RJY",
+    "speedKmph": 154,
+    "status": "Delayed by 45m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 32,
+    "stationCode": "RJY",
+    "speedKmph": 154,
+    "status": "Delayed by 32m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 29,
+    "stationCode": "RJY",
+    "speedKmph": 154,
+    "status": "Delayed by 29m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 39,
+    "stationCode": "RJY",
+    "speedKmph": 154,
+    "status": "Delayed by 39m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 53,
+    "stationCode": "RJY",
+    "speedKmph": 154,
+    "status": "Delayed by 53m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 58,
+    "stationCode": "RJY",
+    "speedKmph": 154,
+    "status": "Delayed by 58m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 49,
+    "stationCode": "RJY",
+    "speedKmph": 154,
+    "status": "Delayed by 49m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BZA",
+    "speedKmph": 130,
+    "status": "On Time",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BZA",
+    "speedKmph": 130,
+    "status": "On Time",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BZA",
+    "speedKmph": 130,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "BZA",
+    "speedKmph": 130,
+    "status": "Delayed by 12m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "BZA",
+    "speedKmph": 130,
+    "status": "Delayed by 17m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 8,
+    "stationCode": "BZA",
+    "speedKmph": 130,
+    "status": "Delayed by 8m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BZA",
+    "speedKmph": 130,
+    "status": "On Time",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 13,
+    "stationCode": "BWN",
+    "speedKmph": 131,
+    "status": "Delayed by 13m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "BWN",
+    "speedKmph": 131,
+    "status": "Delayed by 14m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "BWN",
+    "speedKmph": 131,
+    "status": "Delayed by 2m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BWN",
+    "speedKmph": 131,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BWN",
+    "speedKmph": 131,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "BWN",
+    "speedKmph": 131,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "BWN",
+    "speedKmph": 131,
+    "status": "Delayed by 10m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 78,
+    "stationCode": "BWN",
+    "speedKmph": 132,
+    "status": "Delayed by 78m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 66,
+    "stationCode": "BWN",
+    "speedKmph": 132,
+    "status": "Delayed by 66m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 53,
+    "stationCode": "BWN",
+    "speedKmph": 132,
+    "status": "Delayed by 53m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 50,
+    "stationCode": "BWN",
+    "speedKmph": 132,
+    "status": "Delayed by 50m",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 60,
+    "stationCode": "BWN",
+    "speedKmph": 132,
+    "status": "Delayed by 60m",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 74,
+    "stationCode": "BWN",
+    "speedKmph": 132,
+    "status": "Delayed by 74m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 79,
+    "stationCode": "BWN",
+    "speedKmph": 132,
+    "status": "Delayed by 79m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 13,
+    "stationCode": "GWL",
+    "speedKmph": 133,
+    "status": "Delayed by 13m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 14,
+    "stationCode": "GWL",
+    "speedKmph": 133,
+    "status": "Delayed by 14m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 2,
+    "stationCode": "GWL",
+    "speedKmph": 133,
+    "status": "Delayed by 2m",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GWL",
+    "speedKmph": 133,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GWL",
+    "speedKmph": 133,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GWL",
+    "speedKmph": 133,
+    "status": "On Time",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 10,
+    "stationCode": "GWL",
+    "speedKmph": 133,
+    "status": "Delayed by 10m",
+    "dayOffset": -1
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "snapshotTimestamp": "2026-10-14T22:06:04.207Z",
+    "observedDelayMinutes": 16,
+    "stationCode": "GWL",
+    "speedKmph": 134,
+    "status": "Delayed by 16m",
+    "dayOffset": -7
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "snapshotTimestamp": "2026-10-15T22:06:04.207Z",
+    "observedDelayMinutes": 4,
+    "stationCode": "GWL",
+    "speedKmph": 134,
+    "status": "Delayed by 4m",
+    "dayOffset": -6
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "snapshotTimestamp": "2026-10-16T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GWL",
+    "speedKmph": 134,
+    "status": "On Time",
+    "dayOffset": -5
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "snapshotTimestamp": "2026-10-17T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GWL",
+    "speedKmph": 134,
+    "status": "On Time",
+    "dayOffset": -4
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "snapshotTimestamp": "2026-10-18T22:06:04.207Z",
+    "observedDelayMinutes": 0,
+    "stationCode": "GWL",
+    "speedKmph": 134,
+    "status": "On Time",
+    "dayOffset": -3
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "snapshotTimestamp": "2026-10-19T22:06:04.207Z",
+    "observedDelayMinutes": 12,
+    "stationCode": "GWL",
+    "speedKmph": 134,
+    "status": "Delayed by 12m",
+    "dayOffset": -2
+  },
+  {
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "snapshotTimestamp": "2026-10-20T22:06:04.207Z",
+    "observedDelayMinutes": 17,
+    "stationCode": "GWL",
+    "speedKmph": 134,
+    "status": "Delayed by 17m",
+    "dayOffset": -1
+  }
+]

@@ -10,33 +10,39 @@ import {
   ResponsiveContainer,
   CartesianGrid
 } from 'recharts';
-import { LineChart as ChartIcon, TrendingDown, TrendingUp, Minus, Search, History } from 'lucide-react';
+import { LineChart as ChartIcon, TrendingDown, TrendingUp, Minus, Search, History, Loader2, AlertCircle } from 'lucide-react';
 
 interface Props {
   initialTrainNumber?: string;
 }
 
 export const DelayAnalyticsView: React.FC<Props> = ({ initialTrainNumber = '12951' }) => {
-  const [trainNumber, setTrainNumber] = useState(initialTrainNumber);
+  const [searchInput, setSearchInput] = useState(initialTrainNumber);
   const [trend, setTrend] = useState<any>(null);
   const [snapshots, setSnapshots] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchAnalytics(trainNumber);
-  }, [trainNumber]);
+    setSearchInput(initialTrainNumber);
+  }, [initialTrainNumber]);
 
   const fetchAnalytics = async (num: string) => {
+    if (!num.trim()) return;
     setLoading(true);
+    setError(null);
     try {
       const [trendResp, snapsResp] = await Promise.all([
-        Api.getDelayTrend(num),
-        Api.getSnapshots(num)
+        Api.getDelayTrend(num.trim()),
+        Api.getSnapshots(num.trim())
       ]);
       if (trendResp.success) setTrend(trendResp.data);
       if (snapsResp.success) setSnapshots(snapsResp.data || []);
-    } catch (e) {
-      console.error(e);
+      if (!trendResp.success && !snapsResp.success) {
+        setError(`No historical snapshots recorded yet for train #${num}`);
+      }
+    } catch (e: any) {
+      setError(e.message || 'Error fetching analytics');
     } finally {
       setLoading(false);
     }
@@ -44,7 +50,7 @@ export const DelayAnalyticsView: React.FC<Props> = ({ initialTrainNumber = '1295
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (trainNumber.trim()) fetchAnalytics(trainNumber.trim());
+    if (searchInput.trim()) fetchAnalytics(searchInput.trim());
   };
 
   const chartData = snapshots.map(s => ({
@@ -72,18 +78,40 @@ export const DelayAnalyticsView: React.FC<Props> = ({ initialTrainNumber = '1295
           <div className="relative flex-1 max-w-xs">
             <input
               type="text"
-              value={trainNumber}
-              onChange={e => setTrainNumber(e.target.value)}
-              placeholder="Train number..."
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
+              placeholder="Train number (e.g. 12951, 12952)..."
               className="w-full bg-slate-950 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-xs text-white font-mono focus:border-cyan-500 focus:outline-none"
             />
             <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
           </div>
-          <button type="submit" className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs">
-            Analyze Delay
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs flex items-center gap-2 shadow-sm"
+          >
+            {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <ChartIcon className="w-3.5 h-3.5" />}
+            <span>{loading ? 'Analyzing...' : 'Analyze Delay'}</span>
           </button>
         </form>
+
+        {error && (
+          <div className="mt-3 p-3 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-400 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-slate-500" />
+            <span>{error}</span>
+          </div>
+        )}
       </div>
+
+      {!trend && !loading && !error && (
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-400 space-y-2">
+          <ChartIcon className="w-10 h-10 text-slate-600 mx-auto mb-2" />
+          <h3 className="text-sm font-semibold text-white">No Delay Telemetry Analyzed Yet</h3>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            Enter a train number above and click <strong className="text-cyan-400">Analyze Delay</strong> to compute recovery velocity, regression metrics, and time-series delay graphs.
+          </p>
+        </div>
+      )}
 
       {trend && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
@@ -158,7 +186,7 @@ export const DelayAnalyticsView: React.FC<Props> = ({ initialTrainNumber = '1295
           </div>
         ) : (
           <div className="p-8 text-center text-slate-500 text-xs">
-            No historical delay snapshots recorded for {trainNumber} yet. Telemetry snapshots record automatically on live tracking queries.
+            No historical delay snapshots recorded for #{searchInput} yet. Telemetry snapshots record automatically on live tracking queries.
           </div>
         )}
       </div>

@@ -109,7 +109,7 @@ export const Sidebar: React.FC<Props> = ({ currentView, onSelectView, clusterHea
     {
       title: 'DCS DISTRIBUTED SYSTEM',
       items: [
-        { id: 'distributed-monitor' as NavView, label: 'Cluster & Fault Demo', icon: Activity, dcs: true },
+        { id: 'distributed-monitor' as NavView, label: 'Cluster & Fault Monitor', icon: Activity, dcs: true },
         { id: 'quota-dashboard' as NavView, label: 'API Quota Manager', icon: ShieldAlert },
         { id: 'api-registry' as NavView, label: 'API Registry Catalog', icon: BookOpen }
       ]

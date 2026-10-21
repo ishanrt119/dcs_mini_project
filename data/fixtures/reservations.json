@@ -1,47 +1,700 @@
 {
   "pnrs": {
-    "8421928374": {
-      "pnr": "8421928374",
-      "trainNumber": "12951",
-      "trainName": "Mumbai Tejas Rajdhani",
-      "journeyDate": "2026-10-25",
-      "fromStation": "MMCT",
-      "toStation": "NDLS",
-      "boardingStation": "MMCT",
-      "classType": "2A",
-      "chartStatus": "CHART NOT PREPARED",
+    "8421100001": {
+      "pnr": "8421100001",
+      "trainNumber": "12952",
+      "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+      "journeyDate": "2026-10-23",
+      "fromStation": "NDLS",
+      "toStation": "BRC",
+      "boardingStation": "NDLS",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
       "passengers": [
-        { "passengerIndex": 1, "bookingStatus": "RAC 4", "currentStatus": "CNF A2 21", "confirmationChancePercent": 100 },
-        { "passengerIndex": 2, "bookingStatus": "RAC 5", "currentStatus": "CNF A2 22", "confirmationChancePercent": 100 }
+        {
+          "passengerIndex": 1,
+          "name": "PRIYA NAIR",
+          "bookingStatus": "CNF H1 11",
+          "currentStatus": "CNF H1 11",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
       ]
     },
-    "2349812734": {
-      "pnr": "2349812734",
+    "8421100002": {
+      "pnr": "8421100002",
+      "trainNumber": "12953",
+      "trainName": "August Kranti Tejas Rajdhani Express",
+      "journeyDate": "2026-10-24",
+      "fromStation": "MMCT",
+      "toStation": "BL",
+      "boardingStation": "MMCT",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "ROHAN IYER",
+          "bookingStatus": "CNF H1 12",
+          "currentStatus": "CNF H1 12",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100003": {
+      "pnr": "8421100003",
+      "trainNumber": "12954",
+      "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+      "journeyDate": "2026-10-25",
+      "fromStation": "NZM",
+      "toStation": "RTM",
+      "boardingStation": "NZM",
+      "classType": "1A",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "ANANYA SEN",
+          "bookingStatus": "WL 7",
+          "currentStatus": "WL 1",
+          "berth": "NONE",
+          "confirmationChancePercent": 89
+        }
+      ]
+    },
+    "8421100004": {
+      "pnr": "8421100004",
+      "trainNumber": "12301",
+      "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+      "journeyDate": "2026-10-26",
+      "fromStation": "HWH",
+      "toStation": "GMO",
+      "boardingStation": "HWH",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "VIKRAM CHOUDHURY",
+          "bookingStatus": "CNF H1 14",
+          "currentStatus": "CNF H1 14",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100005": {
+      "pnr": "8421100005",
+      "trainNumber": "12302",
+      "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+      "journeyDate": "2026-10-27",
+      "fromStation": "NDLS",
+      "toStation": "DDU",
+      "boardingStation": "NDLS",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "KAVITA PATEL",
+          "bookingStatus": "CNF H1 15",
+          "currentStatus": "CNF H1 15",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100006": {
+      "pnr": "8421100006",
+      "trainNumber": "12305",
+      "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+      "journeyDate": "2026-10-28",
+      "fromStation": "HWH",
+      "toStation": "DDU",
+      "boardingStation": "HWH",
+      "classType": "1A",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "DEEPAK VERMA",
+          "bookingStatus": "WL 10",
+          "currentStatus": "WL 4",
+          "berth": "NONE",
+          "confirmationChancePercent": 83
+        }
+      ]
+    },
+    "8421100007": {
+      "pnr": "8421100007",
+      "trainNumber": "12306",
+      "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+      "journeyDate": "2026-10-29",
+      "fromStation": "NDLS",
+      "toStation": "DDU",
+      "boardingStation": "NDLS",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "MEERA REDDY",
+          "bookingStatus": "CNF H1 17",
+          "currentStatus": "CNF H1 17",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100008": {
+      "pnr": "8421100008",
+      "trainNumber": "22691",
+      "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+      "journeyDate": "2026-10-22",
+      "fromStation": "SBC",
+      "toStation": "NGP",
+      "boardingStation": "SBC",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "SUNIL RAO",
+          "bookingStatus": "CNF H1 18",
+          "currentStatus": "CNF H1 18",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100009": {
+      "pnr": "8421100009",
+      "trainNumber": "22692",
+      "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+      "journeyDate": "2026-10-23",
+      "fromStation": "NZM",
+      "toStation": "VGLJ",
+      "boardingStation": "NZM",
+      "classType": "1A",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "POOJA JOSHI",
+          "bookingStatus": "WL 13",
+          "currentStatus": "WL 7",
+          "berth": "NONE",
+          "confirmationChancePercent": 77
+        }
+      ]
+    },
+    "8421100010": {
+      "pnr": "8421100010",
+      "trainNumber": "12431",
+      "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+      "journeyDate": "2026-10-24",
+      "fromStation": "TVC",
+      "toStation": "ERS",
+      "boardingStation": "TVC",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "AARAV SHARMA",
+          "bookingStatus": "CNF H1 20",
+          "currentStatus": "CNF H1 20",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100011": {
+      "pnr": "8421100011",
+      "trainNumber": "12432",
+      "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+      "journeyDate": "2026-10-25",
+      "fromStation": "NZM",
+      "toStation": "BRC",
+      "boardingStation": "NZM",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "PRIYA NAIR",
+          "bookingStatus": "CNF H1 21",
+          "currentStatus": "CNF H1 21",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100012": {
+      "pnr": "8421100012",
+      "trainNumber": "12433",
+      "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+      "journeyDate": "2026-10-26",
+      "fromStation": "MAS",
+      "toStation": "NGP",
+      "boardingStation": "MAS",
+      "classType": "1A",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "ROHAN IYER",
+          "bookingStatus": "WL 16",
+          "currentStatus": "WL 10",
+          "berth": "NONE",
+          "confirmationChancePercent": 71
+        }
+      ]
+    },
+    "8421100013": {
+      "pnr": "8421100013",
+      "trainNumber": "12434",
+      "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+      "journeyDate": "2026-10-27",
+      "fromStation": "NZM",
+      "toStation": "VGLJ",
+      "boardingStation": "NZM",
+      "classType": "1A",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "ANANYA SEN",
+          "bookingStatus": "CNF H1 23",
+          "currentStatus": "CNF H1 23",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100014": {
+      "pnr": "8421100014",
       "trainNumber": "22436",
-      "trainName": "Vande Bharat Express",
+      "trainName": "New Delhi - Varanasi Vande Bharat Express",
       "journeyDate": "2026-10-28",
       "fromStation": "NDLS",
       "toStation": "BSB",
       "boardingStation": "NDLS",
       "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "VIKRAM CHOUDHURY",
+          "bookingStatus": "CNF B1 24",
+          "currentStatus": "CNF B1 24",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100015": {
+      "pnr": "8421100015",
+      "trainNumber": "22435",
+      "trainName": "Varanasi - New Delhi Vande Bharat Express",
+      "journeyDate": "2026-10-29",
+      "fromStation": "BSB",
+      "toStation": "NDLS",
+      "boardingStation": "BSB",
+      "classType": "CC",
       "chartStatus": "CHART NOT PREPARED",
       "passengers": [
-        { "passengerIndex": 1, "bookingStatus": "WL 14", "currentStatus": "WL 8", "confirmationChancePercent": 84 }
+        {
+          "passengerIndex": 1,
+          "name": "KAVITA PATEL",
+          "bookingStatus": "WL 19",
+          "currentStatus": "WL 13",
+          "berth": "NONE",
+          "confirmationChancePercent": 65
+        }
+      ]
+    },
+    "8421100016": {
+      "pnr": "8421100016",
+      "trainNumber": "20901",
+      "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+      "journeyDate": "2026-10-22",
+      "fromStation": "MMCT",
+      "toStation": "ST",
+      "boardingStation": "MMCT",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "DEEPAK VERMA",
+          "bookingStatus": "CNF B1 26",
+          "currentStatus": "CNF B1 26",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100017": {
+      "pnr": "8421100017",
+      "trainNumber": "20902",
+      "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+      "journeyDate": "2026-10-23",
+      "fromStation": "GNC",
+      "toStation": "ST",
+      "boardingStation": "GNC",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "MEERA REDDY",
+          "bookingStatus": "CNF B1 27",
+          "currentStatus": "CNF B1 27",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100018": {
+      "pnr": "8421100018",
+      "trainNumber": "20103",
+      "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+      "journeyDate": "2026-10-24",
+      "fromStation": "CSMT",
+      "toStation": "PNVL",
+      "boardingStation": "CSMT",
+      "classType": "CC",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "SUNIL RAO",
+          "bookingStatus": "WL 22",
+          "currentStatus": "WL 16",
+          "berth": "NONE",
+          "confirmationChancePercent": 59
+        }
+      ]
+    },
+    "8421100019": {
+      "pnr": "8421100019",
+      "trainNumber": "20104",
+      "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+      "journeyDate": "2026-10-25",
+      "fromStation": "MAO",
+      "toStation": "ROHA",
+      "boardingStation": "MAO",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "POOJA JOSHI",
+          "bookingStatus": "CNF B1 29",
+          "currentStatus": "CNF B1 29",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100020": {
+      "pnr": "8421100020",
+      "trainNumber": "20607",
+      "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+      "journeyDate": "2026-10-26",
+      "fromStation": "MAS",
+      "toStation": "BNC",
+      "boardingStation": "MAS",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "AARAV SHARMA",
+          "bookingStatus": "CNF B1 30",
+          "currentStatus": "CNF B1 30",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100021": {
+      "pnr": "8421100021",
+      "trainNumber": "20608",
+      "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+      "journeyDate": "2026-10-27",
+      "fromStation": "MYS",
+      "toStation": "JTJ",
+      "boardingStation": "MYS",
+      "classType": "CC",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "PRIYA NAIR",
+          "bookingStatus": "WL 25",
+          "currentStatus": "WL 19",
+          "berth": "NONE",
+          "confirmationChancePercent": 53
+        }
+      ]
+    },
+    "8421100022": {
+      "pnr": "8421100022",
+      "trainNumber": "22439",
+      "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+      "journeyDate": "2026-10-28",
+      "fromStation": "NDLS",
+      "toStation": "JAT",
+      "boardingStation": "NDLS",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "ROHAN IYER",
+          "bookingStatus": "CNF B1 32",
+          "currentStatus": "CNF B1 32",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100023": {
+      "pnr": "8421100023",
+      "trainNumber": "22440",
+      "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+      "journeyDate": "2026-10-29",
+      "fromStation": "SVDK",
+      "toStation": "UMB",
+      "boardingStation": "SVDK",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "ANANYA SEN",
+          "bookingStatus": "CNF B1 33",
+          "currentStatus": "CNF B1 33",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100024": {
+      "pnr": "8421100024",
+      "trainNumber": "20833",
+      "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+      "journeyDate": "2026-10-22",
+      "fromStation": "VSKP",
+      "toStation": "BZA",
+      "boardingStation": "VSKP",
+      "classType": "CC",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "VIKRAM CHOUDHURY",
+          "bookingStatus": "WL 28",
+          "currentStatus": "WL 22",
+          "berth": "NONE",
+          "confirmationChancePercent": 47
+        }
+      ]
+    },
+    "8421100025": {
+      "pnr": "8421100025",
+      "trainNumber": "20834",
+      "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+      "journeyDate": "2026-10-23",
+      "fromStation": "SC",
+      "toStation": "RJY",
+      "boardingStation": "SC",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "KAVITA PATEL",
+          "bookingStatus": "CNF B1 35",
+          "currentStatus": "CNF B1 35",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100026": {
+      "pnr": "8421100026",
+      "trainNumber": "22301",
+      "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+      "journeyDate": "2026-10-24",
+      "fromStation": "HWH",
+      "toStation": "NJP",
+      "boardingStation": "HWH",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "DEEPAK VERMA",
+          "bookingStatus": "CNF B1 36",
+          "currentStatus": "CNF B1 36",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100027": {
+      "pnr": "8421100027",
+      "trainNumber": "22302",
+      "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+      "journeyDate": "2026-10-25",
+      "fromStation": "NJP",
+      "toStation": "HWH",
+      "boardingStation": "NJP",
+      "classType": "CC",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "MEERA REDDY",
+          "bookingStatus": "WL 31",
+          "currentStatus": "WL 25",
+          "berth": "NONE",
+          "confirmationChancePercent": 41
+        }
+      ]
+    },
+    "8421100028": {
+      "pnr": "8421100028",
+      "trainNumber": "20171",
+      "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+      "journeyDate": "2026-10-26",
+      "fromStation": "RKMP",
+      "toStation": "AGC",
+      "boardingStation": "RKMP",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "SUNIL RAO",
+          "bookingStatus": "CNF B1 38",
+          "currentStatus": "CNF B1 38",
+          "berth": "LOWER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100029": {
+      "pnr": "8421100029",
+      "trainNumber": "20172",
+      "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+      "journeyDate": "2026-10-27",
+      "fromStation": "NZM",
+      "toStation": "VGLJ",
+      "boardingStation": "NZM",
+      "classType": "CC",
+      "chartStatus": "CHART PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "POOJA JOSHI",
+          "bookingStatus": "CNF B1 39",
+          "currentStatus": "CNF B1 39",
+          "berth": "SIDE UPPER",
+          "confirmationChancePercent": 100
+        }
+      ]
+    },
+    "8421100030": {
+      "pnr": "8421100030",
+      "trainNumber": "12002",
+      "trainName": "New Delhi - Habibganj Shatabdi Express",
+      "journeyDate": "2026-10-28",
+      "fromStation": "NDLS",
+      "toStation": "VGLJ",
+      "boardingStation": "NDLS",
+      "classType": "CC",
+      "chartStatus": "CHART NOT PREPARED",
+      "passengers": [
+        {
+          "passengerIndex": 1,
+          "name": "AARAV SHARMA",
+          "bookingStatus": "WL 34",
+          "currentStatus": "WL 28",
+          "berth": "NONE",
+          "confirmationChancePercent": 35
+        }
       ]
     }
   },
   "fareRules": {
-    "1A": { "basePerKm": 3.10, "resCharge": 60, "superfast": 75, "gstRate": 0.05 },
-    "2A": { "basePerKm": 1.95, "resCharge": 50, "superfast": 45, "gstRate": 0.05 },
-    "3A": { "basePerKm": 1.40, "resCharge": 40, "superfast": 45, "gstRate": 0.05 },
-    "EC": { "basePerKm": 2.45, "resCharge": 60, "superfast": 75, "gstRate": 0.05 },
-    "CC": { "basePerKm": 1.30, "resCharge": 40, "superfast": 45, "gstRate": 0.05 },
-    "SL": { "basePerKm": 0.52, "resCharge": 20, "superfast": 30, "gstRate": 0.0 }
+    "1A": {
+      "basePerKm": 3.1,
+      "resCharge": 60,
+      "superfast": 75,
+      "gstRate": 0.05
+    },
+    "2A": {
+      "basePerKm": 1.95,
+      "resCharge": 50,
+      "superfast": 45,
+      "gstRate": 0.05
+    },
+    "3A": {
+      "basePerKm": 1.4,
+      "resCharge": 40,
+      "superfast": 45,
+      "gstRate": 0.05
+    },
+    "EC": {
+      "basePerKm": 2.45,
+      "resCharge": 60,
+      "superfast": 75,
+      "gstRate": 0.05
+    },
+    "CC": {
+      "basePerKm": 1.3,
+      "resCharge": 40,
+      "superfast": 45,
+      "gstRate": 0.05
+    },
+    "SL": {
+      "basePerKm": 0.52,
+      "resCharge": 20,
+      "superfast": 30,
+      "gstRate": 0
+    },
+    "2S": {
+      "basePerKm": 0.35,
+      "resCharge": 15,
+      "superfast": 15,
+      "gstRate": 0
+    }
   },
   "refundRules": [
-    { "condition": ">48h before scheduled departure", "confirmed": "Flat cancellation fee (1A: ₹240, 2A/EC: ₹200, 3A/CC: ₹180, SL: ₹120)", "waitlist": "Clerkage fee ₹60 per passenger" },
-    { "condition": "Between 48h and 12h before departure", "confirmed": "25% deduction subject to minimum flat fee", "waitlist": "Clerkage fee ₹60 per passenger" },
-    { "condition": "Between 12h and 4h (charting)", "confirmed": "50% deduction subject to minimum flat fee", "waitlist": "Clerkage fee ₹60 per passenger" },
-    { "condition": "<4h before departure / after charting", "confirmed": "No refund permissible", "waitlist": "Auto-cancellation with clerkage deduction" }
+    {
+      "condition": ">48h before scheduled departure",
+      "confirmed": "Flat cancellation fee (1A: ₹240, 2A/EC: ₹200, 3A/CC: ₹180, SL: ₹120)",
+      "waitlist": "Clerkage fee ₹60 per passenger"
+    },
+    {
+      "condition": "Between 48h and 12h before departure",
+      "confirmed": "25% deduction subject to minimum flat fee",
+      "waitlist": "Clerkage fee ₹60 per passenger"
+    },
+    {
+      "condition": "Between 12h and 4h (charting)",
+      "confirmed": "50% deduction subject to minimum flat fee",
+      "waitlist": "Clerkage fee ₹60 per passenger"
+    },
+    {
+      "condition": "<4h before departure / after charting",
+      "confirmed": "No refund permissible",
+      "waitlist": "Auto-cancellation with clerkage deduction"
+    }
   ]
 }

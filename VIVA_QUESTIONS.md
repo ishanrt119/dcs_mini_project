@@ -79,14 +79,14 @@ RailSync implements periodic health heartbeats every 3000ms. When a simulated ou
 
 ---
 
-### Q9: How does RailSync protect the strict 100-request RailRadar API quota?
+### Q9: How does RailSync guarantee zero outbound API calls while maintaining a full feature set?
 **Answer:**
-RailSync implements an API Request Budget Manager with 5 strict rules:
-1. **Conservative Internal Cap**: Hard cap set at 80 requests/month, keeping a 20-request buffer for emergency evaluations.
-2. **Mandatory Demo Mode**: Configured with `DEMO_MODE=true` and `LIVE_API_ENABLED=false` by default, serving deterministic mock fixtures.
-3. **No Automatic Polling**: Rendering dashboard components or viewing watchlists never triggers upstream queries.
-4. **Pre-flight Permission Verification**: Every outbound request must pass a 5-step policy check (budget remaining, live mode active, API key present, endpoint cataloged).
-5. **Transparent Source Badges**: The UI visibly differentiates between `LIVE_PROVIDER_DATA`, `CACHED_PROVIDER_DATA`, `SIMULATED_DEMO_DATA`, and `LOCAL_HISTORICAL_OBSERVATION`.
+RailSync implements an offline demo architecture with strict safeguards:
+1. **Permanent Offline Lock**: Configured with `DEMO_MODE=true` and `LIVE_API_ENABLED=false` at the server and quota manager level. Even if a user attempts to trigger an external call, `verifyOutboundPermission()` throws an exception and refuses outbound socket creation.
+2. **Local JSON Fixture Ecosystem**: All railway catalog data is resolved locally from expanded fixtures: 134 trains, 171 stations, 134 routes and schedules, 25 coach compositions, 35 platform alignments, 58 suburban services, and 26 freight rakes.
+3. **Local Simulation Logic**: Dynamic operations (live train movement interpolation, PNR confirmation chances, fare rules, refund calculations) run on deterministic local simulation algorithms with reproducible clocks.
+4. **Mock Provider Testing Sandbox**: In the API Registry, simulated upstream calls return realistic mock responses (with configurable HTTP status codes 200, 404, 429, 503, headers, and trace IDs) without sending any network packet outside localhost.
+5. **Separation of Counters**: The quota dashboard tracks `actualOutboundCalls` (strictly 0) separately from `mockProviderCalls`, transparently showing evaluators that zero third-party calls are made.
 
 ---
 
@@ -110,3 +110,29 @@ The `/api/overview` endpoint uses the Scatter-Gather distributed pattern:
   - Replace the in-memory cache with a distributed Redis cluster.
   - Replace HTTP IPC with high-throughput binary **gRPC over HTTP/2** with Protocol Buffers for lower serialization overhead.
   - Implement Raft consensus for leader election among analytics nodes.
+
+---
+
+### Q12: Does running 100% offline invalidate RailSync as a Distributed Computing Systems project?
+**Answer:**
+**Absolutely not.** In Distributed Computing Systems theory:
+- The defining criterion of a distributed system is the **internal architecture**: autonomous operating system processes executing in separate memory address spaces, communicating via network sockets/protocols, handling partial failures, coordinating distributed tasks, and achieving consensus or fault tolerance.
+- Reaching out across the public internet to a third-party SaaS API (like RailRadar or Google Maps) is merely being an API client; it contributes zero distributed computing concepts to the application itself.
+- In RailSync, the distributed system is our **internal cluster**:
+  - 5 independent Node.js processes on ports `4000`, `4001`, `4002`, `4003`, and `4004`.
+  - Real TCP loopback sockets, HTTP/1.1 serialization/deserialization, and custom JSON-RPC 2.0.
+  - Real distributed patterns: Scatter-Gather aggregation, 4-second AbortController deadlines, fault injection (simulated 503 outage and latency), and self-healing heartbeat polling.
+- Removing external API calls actually **strengthens** the demonstration: evaluations are 100% reliable, never fail due to third-party outages or rate limits, and clearly isolate the internal distributed systems behavior from external network noise.
+
+---
+
+### Q13: What data provenance labels does RailSync use, and why is this important in distributed systems?
+**Answer:**
+Data provenance tracks the origin, transformation history, and custody of data across distributed systems. RailSync enforces 5 honest, unambiguous badges:
+1. **`LOCAL_JSON_FIXTURE`**: Static information loaded directly from curated offline JSON files (stations, timetables, coach layouts, platform alignments).
+2. **`LOCAL_SIMULATION`**: Data dynamically calculated by internal simulation algorithms (e.g. real-time train positioning based on schedule interpolation, PNR confirmation prediction, refund calculations).
+3. **`SIMULATED_PROVIDER_RESPONSE`**: Mock upstream provider response with simulated headers, trace IDs, and network latencies.
+4. **`LOCAL_CACHE`**: Served from node-local in-memory TTL cache with zero computational overhead.
+5. **`UNAVAILABLE`**: Service unreachable or experiencing partial failure.
+
+RailSync **never** labels simulated or local fixture data as `LIVE_PROVIDER_DATA`, upholding academic integrity and complete transparency.

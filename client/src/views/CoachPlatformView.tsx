@@ -1,33 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { Api } from '../api';
 import { SourceBadge } from '../components/SourceBadge';
-import { Layers, Train, MapPin, Footprints, Search } from 'lucide-react';
+import { Layers, Train, Footprints, Search, AlertCircle, Loader2 } from 'lucide-react';
 
 interface Props {
   initialTrainNumber?: string;
 }
 
 export const CoachPlatformView: React.FC<Props> = ({ initialTrainNumber = '12951' }) => {
-  const [trainNumber, setTrainNumber] = useState(initialTrainNumber);
+  const [searchInput, setSearchInput] = useState(initialTrainNumber);
   const [coachData, setCoachData] = useState<any>(null);
   const [platformData, setPlatformData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchData(trainNumber);
-  }, [trainNumber]);
+    setSearchInput(initialTrainNumber);
+  }, [initialTrainNumber]);
 
   const fetchData = async (num: string) => {
+    if (!num.trim()) return;
     setLoading(true);
+    setError(null);
     try {
       const [cResp, pResp] = await Promise.all([
-        Api.getCoachLayout(num),
-        Api.getPlatformPositions(num)
+        Api.getCoachLayout(num.trim()),
+        Api.getPlatformPositions(num.trim())
       ]);
-      if (cResp.success) setCoachData(cResp.data);
-      if (pResp.success) setPlatformData(pResp.data);
-    } catch (e) {
-      console.error(e);
+      if (cResp.success && cResp.data) {
+        setCoachData(cResp.data);
+      } else {
+        setError(cResp.error?.message || `Unable to locate coach layout for train #${num}`);
+      }
+      if (pResp.success && pResp.data) {
+        setPlatformData(pResp.data);
+      }
+    } catch (e: any) {
+      setError(e.message || 'Error fetching coach layout from server');
     } finally {
       setLoading(false);
     }
@@ -35,7 +44,9 @@ export const CoachPlatformView: React.FC<Props> = ({ initialTrainNumber = '12951
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (trainNumber.trim()) fetchData(trainNumber.trim());
+    if (searchInput.trim()) {
+      fetchData(searchInput.trim());
+    }
   };
 
   return (
@@ -56,18 +67,40 @@ export const CoachPlatformView: React.FC<Props> = ({ initialTrainNumber = '12951
           <div className="relative flex-1 max-w-xs">
             <input
               type="text"
-              value={trainNumber}
-              onChange={e => setTrainNumber(e.target.value)}
-              placeholder="Train number..."
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
+              placeholder="Train number (e.g. 12951, 12952, 22436)..."
               className="w-full bg-slate-950 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-xs text-white font-mono focus:border-cyan-500 focus:outline-none"
             />
             <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
           </div>
-          <button type="submit" className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs">
-            Inspect Rake
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 text-white font-medium text-xs transition-all flex items-center gap-2 shadow-sm"
+          >
+            {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Train className="w-3.5 h-3.5" />}
+            <span>{loading ? 'Inspecting Rake...' : 'Inspect Rake'}</span>
           </button>
         </form>
+
+        {error && (
+          <div className="mt-3 p-3 bg-red-950/40 border border-red-800/50 rounded-xl text-red-300 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+            <span>{error}</span>
+          </div>
+        )}
       </div>
+
+      {!coachData && !loading && !error && (
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-400 space-y-2">
+          <Layers className="w-10 h-10 text-slate-600 mx-auto mb-2" />
+          <h3 className="text-sm font-semibold text-white">No Rake Inspected Yet</h3>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            Enter a train number above (e.g. 12951, 12952, 22436) and click <strong className="text-cyan-400">Inspect Rake</strong> to view coach layout and platform alignment.
+          </p>
+        </div>
+      )}
 
       {coachData && (
         <div className="space-y-6">

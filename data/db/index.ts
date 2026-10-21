@@ -93,6 +93,13 @@ export function initDatabase() {
       notes TEXT,
       added_at TEXT NOT NULL
     );
+
+    -- Distributed cluster system configuration
+    CREATE TABLE IF NOT EXISTS system_config (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
   `);
 
   // Seed default saved trains if empty
@@ -368,5 +375,29 @@ export const SavedTrainsRepository = {
   },
   remove(trainNumber: string) {
     db.prepare('DELETE FROM saved_trains WHERE train_number = ?').run(trainNumber);
+  }
+};
+
+// ------------------- System Configuration Repository -------------------
+export const SystemConfigRepository = {
+  get(key: string, defaultValue?: string): string | undefined {
+    try {
+      const row = db.prepare('SELECT value FROM system_config WHERE key = ?').get(key) as { value: string } | undefined;
+      return row ? row.value : defaultValue;
+    } catch {
+      return defaultValue;
+    }
+  },
+  set(key: string, value: string) {
+    try {
+      const stmt = db.prepare(`
+        INSERT INTO system_config (key, value, updated_at)
+        VALUES (?, ?, ?)
+        ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at
+      `);
+      stmt.run(key, value, new Date().toISOString());
+    } catch (e) {
+      console.error('Failed to set system config in DB', e);
+    }
   }
 };

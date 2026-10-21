@@ -5,6 +5,7 @@ import path from 'path';
 import fs from 'fs';
 import { DataSourceLabel, SeatAvailabilityResult, FareCalculationResult, PnrStatusResult, ConfirmationPredictionResult, RefundEstimationResult } from '../../shared/types.js';
 import { ServiceHealthRepository } from '../../data/db/index.js';
+import { DemoRailwayAdapter } from '../../shared/demo-railway-adapter.js';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 const startTime = Date.now();
 let requestCount = 0;
+const demoAdapter = DemoRailwayAdapter.getInstance();
 
 // Load fixtures
 const reservationsData: any = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'data/fixtures/reservations.json'), 'utf-8'));
@@ -66,12 +68,20 @@ app.post('/admin/simulate-failure', (req, res) => {
 
 // 1. Seat Availability (GET /v1/reservation/availability?train=...&from=...&to=...&date=...&class=...&quota=...)
 app.get('/reservation/availability', (req, res) => {
-  const trainNumber = (req.query.train as string) || '12951';
-  const from = ((req.query.from as string) || 'MMCT').toUpperCase();
-  const to = ((req.query.to as string) || 'NDLS').toUpperCase();
+  const trainNumber = ((req.query.train as string) || '12951').trim();
+  const from = ((req.query.from as string) || 'MMCT').toUpperCase().trim();
+  const to = ((req.query.to as string) || 'NDLS').toUpperCase().trim();
   const date = (req.query.date as string) || new Date().toISOString().split('T')[0];
-  const classType = ((req.query.class as string) || '3A').toUpperCase();
-  const quota = ((req.query.quota as string) || 'GN').toUpperCase();
+  const classType = ((req.query.class as string) || '3A').toUpperCase().trim();
+  const quota = ((req.query.quota as string) || 'GN').toUpperCase().trim();
+
+  if (!trainNumber || from === to) {
+    return res.status(400).json({
+      success: false,
+      error: { code: 'INVALID_AVAILABILITY_QUERY', message: 'Origin and destination must be distinct stations' },
+      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
+    });
+  }
 
   // Generate deterministic 6-day availability matrix
   const baseDate = new Date(date);
@@ -111,7 +121,7 @@ app.get('/reservation/availability', (req, res) => {
       traceId: `avail-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 2,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'SEAT_AVAILABILITY'
     }
   });
@@ -119,9 +129,18 @@ app.get('/reservation/availability', (req, res) => {
 
 // 2. Fare Calculator (GET /v1/reservation/fare?train=...&from=...&to=...&distance=...)
 app.get('/reservation/fare', (req, res) => {
-  const trainNumber = (req.query.train as string) || '12951';
-  const from = ((req.query.from as string) || 'MMCT').toUpperCase();
-  const to = ((req.query.to as string) || 'NDLS').toUpperCase();
+  const trainNumber = ((req.query.train as string) || '12951').trim();
+  const from = ((req.query.from as string) || 'MMCT').toUpperCase().trim();
+  const to = ((req.query.to as string) || 'NDLS').toUpperCase().trim();
+
+  // Validate from and to
+  if (from === to && from !== '') {
+    return res.status(400).json({
+      success: false,
+      error: { code: 'INVALID_FARE_QUERY', message: 'Origin and destination station codes must be distinct' },
+      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
+    });
+  }
 
   // Find approximate distance from train route if available
   const train = trainsData.find(t => t.trainNumber === trainNumber);
@@ -169,16 +188,17 @@ app.get('/reservation/fare', (req, res) => {
       traceId: `fare-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 2,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'FARE_CALCULATOR'
     }
   });
 });
 
 // 3. PNR Status (GET /v1/pnr/:pnr)
-// Strict rule: NEVER log PNR, mask digits in logs
+// Strict rule: NEVER log raw PNR, mask digits in logs
 app.get('/pnr/:pnr', (req, res) => {
-  const pnr = req.params.pnr.replace(/\D/g, ''); // Digits only
+  const rawPnr = req.params.pnr.trim();
+  const pnr = rawPnr.replace(/\D/g, ''); // Digits only
 
   if (pnr.length !== 10) {
     return res.status(400).json({
@@ -188,8 +208,8 @@ app.get('/pnr/:pnr', (req, res) => {
     });
   }
 
-  // Look up in mock reservations fixture
-  const record = reservationsData.pnrs[pnr];
+  // Look up in mock reservations fixture or demo adapter
+  const record = demoAdapter.getPnrStatus(pnr);
   if (record) {
     return res.json({
       success: true,
@@ -198,44 +218,16 @@ app.get('/pnr/:pnr', (req, res) => {
         traceId: `pnr-${Date.now()}`,
         timestamp: new Date().toISOString(),
         executionTimeMs: 2,
-        source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+        source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
         endpointId: 'PNR_STATUS'
       }
     });
   }
 
-  // Generate deterministic synthetic PNR result for arbitrary 10 digits
-  const lastDigit = parseInt(pnr.slice(-1), 10);
-  const syntheticResult: PnrStatusResult = {
-    pnr: `${pnr.slice(0, 3)}-${pnr.slice(3)}`,
-    trainNumber: '12951',
-    trainName: 'Mumbai Tejas Rajdhani',
-    journeyDate: '2026-10-26',
-    fromStation: 'MMCT',
-    toStation: 'NDLS',
-    boardingStation: 'MMCT',
-    classType: '3A',
-    chartStatus: lastDigit % 2 === 0 ? 'CHART PREPARED' : 'CHART NOT PREPARED',
-    passengers: [
-      {
-        passengerIndex: 1,
-        bookingStatus: lastDigit > 5 ? 'RAC 2' : 'CNF B3 42',
-        currentStatus: lastDigit > 5 ? 'CNF B3 55' : 'CNF B3 42',
-        confirmationChancePercent: 100
-      }
-    ]
-  };
-
-  res.json({
-    success: true,
-    data: syntheticResult,
-    meta: {
-      traceId: `pnr-${Date.now()}`,
-      timestamp: new Date().toISOString(),
-      executionTimeMs: 2,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
-      endpointId: 'PNR_STATUS'
-    }
+  return res.status(404).json({
+    success: false,
+    error: { code: 'PNR_NOT_FOUND', message: 'PNR record not found' },
+    meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
   });
 });
 
@@ -245,6 +237,14 @@ app.get('/pnr/prediction', (req, res) => {
   const classType = ((req.query.class as string) || '3A').toUpperCase();
   const waitlistNumber = parseInt((req.query.waitlistNumber as string) || '15', 10);
   const journeyDate = (req.query.date as string) || new Date().toISOString().split('T')[0];
+
+  if (isNaN(waitlistNumber) || waitlistNumber < 0) {
+    return res.status(400).json({
+      success: false,
+      error: { code: 'INVALID_WAITLIST_NUMBER', message: 'Waitlist position must be a non-negative number' },
+      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
+    });
+  }
 
   // Heuristic probability calculation
   let prob = Math.max(10, Math.min(98, 100 - waitlistNumber * 3.5));
@@ -271,7 +271,7 @@ app.get('/pnr/prediction', (req, res) => {
       traceId: `pred-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 2,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'CONFIRMATION_PREDICTION'
     }
   });
@@ -279,10 +279,22 @@ app.get('/pnr/prediction', (req, res) => {
 
 // 5. Cancellation Refund Rules (GET /v1/reservation/refund-rules?ticketAmount=...&class=...&hoursBeforeDeparture=...&status=...)
 app.get('/reservation/refund-rules', (req, res) => {
-  const ticketAmount = parseFloat((req.query.ticketAmount as string) || '1890');
+  const rawTicketAmount = req.query.ticketAmount as string;
+  const rawHours = req.query.hoursBeforeDeparture as string;
+
+  const ticketAmount = parseFloat(rawTicketAmount || '1890');
   const classType = ((req.query.class as string) || '3A').toUpperCase();
-  const hours = parseFloat((req.query.hoursBeforeDeparture as string) || '52');
+  const hours = parseFloat(rawHours || '52');
   const status = ((req.query.status as string) || 'CONFIRMED').toUpperCase() as 'CONFIRMED' | 'RAC' | 'WAITLIST';
+
+  // Validate numeric parameters
+  if (isNaN(ticketAmount) || ticketAmount <= 0 || isNaN(hours) || hours < 0) {
+    return res.status(400).json({
+      success: false,
+      error: { code: 'INVALID_REFUND_PARAMETERS', message: 'Ticket amount must be positive and hoursBeforeDeparture must be non-negative.' },
+      meta: { traceId: `err-${Date.now()}`, timestamp: new Date().toISOString(), executionTimeMs: 1, source: 'UNAVAILABLE' as DataSourceLabel }
+    });
+  }
 
   let clerkageOrFee = 0;
   let ruleText = '';
@@ -292,7 +304,7 @@ app.get('/reservation/refund-rules', (req, res) => {
     ruleText = 'Waitlisted/RAC ticket cancelled: Flat clerkage charge of ₹60 per passenger deducted.';
   } else {
     // Confirmed tickets
-    const flatCharges: Record<string, number> = { '1A': 240, '2A': 200, '3A': 180, 'CC': 180, 'EC': 200, 'SL': 120 };
+    const flatCharges: Record<string, number> = { '1A': 240, '2A': 200, '3A': 180, 'CC': 180, 'EC': 200, 'SL': 120, '2S': 60 };
     const flatFee = flatCharges[classType] || 180;
 
     if (hours > 48) {
@@ -329,12 +341,12 @@ app.get('/reservation/refund-rules', (req, res) => {
       traceId: `refund-${Date.now()}`,
       timestamp: new Date().toISOString(),
       executionTimeMs: 1,
-      source: 'SIMULATED_DEMO_DATA' as DataSourceLabel,
+      source: 'LOCAL_JSON_FIXTURE' as DataSourceLabel,
       endpointId: 'CANCELLATION_REFUND'
     }
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`[Service: Reservation Intelligence] running on port ${PORT}`);
+  console.log(`[Service: Reservation Intelligence] running offline on port ${PORT}`);
 });

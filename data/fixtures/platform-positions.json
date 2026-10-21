@@ -1,0 +1,317 @@
+{
+  "MMCT_12951": {
+    "stationCode": "MMCT",
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Tejas Rajdhani Express",
+    "platform": "1",
+    "scheduledArrival": "06:00",
+    "scheduledDeparture": "06:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NDLS_12952": {
+    "stationCode": "NDLS",
+    "trainNumber": "12952",
+    "trainName": "New Delhi - Mumbai Central Tejas Rajdhani Express",
+    "platform": "1",
+    "scheduledArrival": "08:00",
+    "scheduledDeparture": "08:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "MMCT_12953": {
+    "stationCode": "MMCT",
+    "trainNumber": "12953",
+    "trainName": "August Kranti Tejas Rajdhani Express",
+    "platform": "1",
+    "scheduledArrival": "10:00",
+    "scheduledDeparture": "10:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NZM_12954": {
+    "stationCode": "NZM",
+    "trainNumber": "12954",
+    "trainName": "Hazrat Nizamuddin - Mumbai Central August Kranti Rajdhani",
+    "platform": "1",
+    "scheduledArrival": "12:00",
+    "scheduledDeparture": "12:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "HWH_12301": {
+    "stationCode": "HWH",
+    "trainNumber": "12301",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Gaya)",
+    "platform": "1",
+    "scheduledArrival": "14:00",
+    "scheduledDeparture": "14:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NDLS_12302": {
+    "stationCode": "NDLS",
+    "trainNumber": "12302",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Gaya)",
+    "platform": "1",
+    "scheduledArrival": "16:00",
+    "scheduledDeparture": "16:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "HWH_12305": {
+    "stationCode": "HWH",
+    "trainNumber": "12305",
+    "trainName": "Howrah - New Delhi Rajdhani Express (via Patna)",
+    "platform": "1",
+    "scheduledArrival": "18:00",
+    "scheduledDeparture": "18:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NDLS_12306": {
+    "stationCode": "NDLS",
+    "trainNumber": "12306",
+    "trainName": "New Delhi - Howrah Rajdhani Express (via Patna)",
+    "platform": "1",
+    "scheduledArrival": "20:00",
+    "scheduledDeparture": "20:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "SBC_22691": {
+    "stationCode": "SBC",
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru - Hazrat Nizamuddin Rajdhani Express",
+    "platform": "1",
+    "scheduledArrival": "00:00",
+    "scheduledDeparture": "00:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NZM_22692": {
+    "stationCode": "NZM",
+    "trainNumber": "22692",
+    "trainName": "Hazrat Nizamuddin - KSR Bengaluru Rajdhani Express",
+    "platform": "1",
+    "scheduledArrival": "02:00",
+    "scheduledDeparture": "02:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "TVC_12431": {
+    "stationCode": "TVC",
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram - Hazrat Nizamuddin Rajdhani Express",
+    "platform": "1",
+    "scheduledArrival": "04:00",
+    "scheduledDeparture": "04:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NZM_12432": {
+    "stationCode": "NZM",
+    "trainNumber": "12432",
+    "trainName": "Hazrat Nizamuddin - Thiruvananthapuram Rajdhani Express",
+    "platform": "1",
+    "scheduledArrival": "06:00",
+    "scheduledDeparture": "06:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "MAS_12433": {
+    "stationCode": "MAS",
+    "trainNumber": "12433",
+    "trainName": "MGR Chennai Central - Hazrat Nizamuddin Rajdhani",
+    "platform": "1",
+    "scheduledArrival": "08:00",
+    "scheduledDeparture": "08:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NZM_12434": {
+    "stationCode": "NZM",
+    "trainNumber": "12434",
+    "trainName": "Hazrat Nizamuddin - MGR Chennai Central Rajdhani",
+    "platform": "1",
+    "scheduledArrival": "10:00",
+    "scheduledDeparture": "10:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NDLS_22436": {
+    "stationCode": "NDLS",
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "12:00",
+    "scheduledDeparture": "12:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "BSB_22435": {
+    "stationCode": "BSB",
+    "trainNumber": "22435",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "14:00",
+    "scheduledDeparture": "14:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "MMCT_20901": {
+    "stationCode": "MMCT",
+    "trainNumber": "20901",
+    "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat",
+    "platform": "1",
+    "scheduledArrival": "16:00",
+    "scheduledDeparture": "16:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "GNC_20902": {
+    "stationCode": "GNC",
+    "trainNumber": "20902",
+    "trainName": "Gandhinagar Capital - Mumbai Central Vande Bharat",
+    "platform": "1",
+    "scheduledArrival": "18:00",
+    "scheduledDeparture": "18:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "CSMT_20103": {
+    "stationCode": "CSMT",
+    "trainNumber": "20103",
+    "trainName": "CSMT Mumbai - Madgaon Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "20:00",
+    "scheduledDeparture": "20:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "MAO_20104": {
+    "stationCode": "MAO",
+    "trainNumber": "20104",
+    "trainName": "Madgaon - CSMT Mumbai Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "00:00",
+    "scheduledDeparture": "00:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "MAS_20607": {
+    "stationCode": "MAS",
+    "trainNumber": "20607",
+    "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "02:00",
+    "scheduledDeparture": "02:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "MYS_20608": {
+    "stationCode": "MYS",
+    "trainNumber": "20608",
+    "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "04:00",
+    "scheduledDeparture": "04:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NDLS_22439": {
+    "stationCode": "NDLS",
+    "trainNumber": "22439",
+    "trainName": "New Delhi - SMVD Katra Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "06:00",
+    "scheduledDeparture": "06:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "SVDK_22440": {
+    "stationCode": "SVDK",
+    "trainNumber": "22440",
+    "trainName": "SMVD Katra - New Delhi Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "08:00",
+    "scheduledDeparture": "08:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "VSKP_20833": {
+    "stationCode": "VSKP",
+    "trainNumber": "20833",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "10:00",
+    "scheduledDeparture": "10:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "SC_20834": {
+    "stationCode": "SC",
+    "trainNumber": "20834",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "12:00",
+    "scheduledDeparture": "12:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "HWH_22301": {
+    "stationCode": "HWH",
+    "trainNumber": "22301",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "14:00",
+    "scheduledDeparture": "14:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NJP_22302": {
+    "stationCode": "NJP",
+    "trainNumber": "22302",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "platform": "1",
+    "scheduledArrival": "16:00",
+    "scheduledDeparture": "16:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "RKMP_20171": {
+    "stationCode": "RKMP",
+    "trainNumber": "20171",
+    "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat",
+    "platform": "1",
+    "scheduledArrival": "18:00",
+    "scheduledDeparture": "18:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NZM_20172": {
+    "stationCode": "NZM",
+    "trainNumber": "20172",
+    "trainName": "Hazrat Nizamuddin - Rani Kamlapati Vande Bharat",
+    "platform": "1",
+    "scheduledArrival": "20:00",
+    "scheduledDeparture": "20:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NDLS_12002": {
+    "stationCode": "NDLS",
+    "trainNumber": "12002",
+    "trainName": "New Delhi - Habibganj Shatabdi Express",
+    "platform": "1",
+    "scheduledArrival": "00:00",
+    "scheduledDeparture": "00:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "RKMP_12001": {
+    "stationCode": "RKMP",
+    "trainNumber": "12001",
+    "trainName": "Habibganj - New Delhi Shatabdi Express",
+    "platform": "1",
+    "scheduledArrival": "02:00",
+    "scheduledDeparture": "02:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "NDLS_12004": {
+    "stationCode": "NDLS",
+    "trainNumber": "12004",
+    "trainName": "New Delhi - Lucknow Swarna Shatabdi Express",
+    "platform": "1",
+    "scheduledArrival": "04:00",
+    "scheduledDeparture": "04:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "LKO_12003": {
+    "stationCode": "LKO",
+    "trainNumber": "12003",
+    "trainName": "Lucknow - New Delhi Swarna Shatabdi Express",
+    "platform": "1",
+    "scheduledArrival": "06:00",
+    "scheduledDeparture": "06:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  },
+  "MAS_12007": {
+    "stationCode": "MAS",
+    "trainNumber": "12007",
+    "trainName": "MGR Chennai Central - Mysuru Shatabdi Express",
+    "platform": "1",
+    "scheduledArrival": "08:00",
+    "scheduledDeparture": "08:00",
+    "alignmentScore": "Optimal (Near escalator & main exit)"
+  }
+}

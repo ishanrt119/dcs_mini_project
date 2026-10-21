@@ -179,5 +179,12 @@ export const Api = {
   },
   async getMapFeed() {
     return fetchJson<any[]>(`${BASE_URL}/network/map-feed`);
+  },
+  async executeMockProviderCall(endpointId: string, params?: Record<string, any>, simulatedStatus: number = 200) {
+    return fetchJson<any>(`${BASE_URL}/system/mock-provider-call`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ endpointId, params, simulatedStatus })
+    });
   }
 };

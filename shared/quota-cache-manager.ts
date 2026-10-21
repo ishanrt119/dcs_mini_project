@@ -1,9 +1,10 @@
-// RailSync Quota & Cache Manager
-// Strictly enforces RailRadar 100-request monthly limit, 80-request internal budget, TTL caching & in-flight deduplication.
+// RailSync Quota & Cache Manager - Offline Demo Mode
+// Strictly prevents outbound calls to external APIs.
+// Distinguishes local fixture / mock requests from outbound provider requests (always 0).
 
 import { QuotaStatus, DataSourceLabel } from './types.js';
 import { API_REGISTRY, ApiRegistryEntry } from './registry.js';
-import { QuotaRepository } from '../data/db/index.js';
+import { QuotaRepository, SystemConfigRepository } from '../data/db/index.js';
 
 interface CacheItem<T> {
   data: T;
@@ -15,9 +16,16 @@ export class QuotaCacheManager {
   private static instance: QuotaCacheManager;
 
   // Configuration
-  private monthlyLimit: number = parseInt(process.env.RAILRADAR_MONTHLY_LIMIT || '100', 10);
-  private internalBudget: number = parseInt(process.env.RAILRADAR_INTERNAL_BUDGET || '80', 10);
+  private monthlyLimit: number = 100;
+  private internalBudget: number = 80;
   private emergencyBuffer: number = 20;
+
+  // Provider access status (permanently disabled in offline demo mode)
+  private providerRemaining: number | null = null;
+  private mockRequestCount: number = 0;
+
+  // Recent outbound call timestamps for per-minute throttle
+  private recentOutboundTimestamps: number[] = [];
 
   // In-flight deduplication map: key -> active Promise
   private inFlightRequests: Map<string, Promise<any>> = new Map();
@@ -31,6 +39,13 @@ export class QuotaCacheManager {
 
   private constructor() {
     this.emergencyBuffer = this.monthlyLimit - this.internalBudget;
+    // Always persist offline demo mode in SQLite
+    try {
+      SystemConfigRepository.set('DEMO_MODE', 'true');
+      SystemConfigRepository.set('LIVE_API_ENABLED', 'false');
+    } catch {
+      // ignore during early init
+    }
   }
 
   public static getInstance(): QuotaCacheManager {
@@ -41,110 +56,84 @@ export class QuotaCacheManager {
   }
 
   public isDemoMode(): boolean {
-    return process.env.DEMO_MODE !== 'false';
+    return true; // Permanent offline demo mode
   }
 
   public isLiveApiEnabled(): boolean {
-    return process.env.LIVE_API_ENABLED === 'true';
+    return false; // Permanent offline mode - external calls prohibited
   }
 
   public setLiveApiEnabled(enabled: boolean) {
-    process.env.LIVE_API_ENABLED = enabled ? 'true' : 'false';
+    // Prohibit re-activation: permanent offline mode
+    process.env.LIVE_API_ENABLED = 'false';
+    SystemConfigRepository.set('LIVE_API_ENABLED', 'false');
+    process.env.DEMO_MODE = 'true';
+    SystemConfigRepository.set('DEMO_MODE', 'true');
   }
 
   public setDemoMode(demo: boolean) {
-    process.env.DEMO_MODE = demo ? 'true' : 'false';
+    process.env.DEMO_MODE = 'true';
+    SystemConfigRepository.set('DEMO_MODE', 'true');
+  }
+
+  public setProviderRemainingQuota(remaining: number) {
+    // No-op in offline mode (do not fabricate)
+    this.providerRemaining = null;
+  }
+
+  public getProviderRemainingQuota(): number | null {
+    return null; // Do not fabricate upstream quota
   }
 
   public getNextResetDate(): string {
     const now = new Date();
-    // Next month 1st at 00:00:00 IST
     const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
     return nextMonth.toISOString();
   }
 
+  public recordMockRequest() {
+    this.mockRequestCount++;
+  }
+
   public getQuotaStatus(): QuotaStatus {
-    const metrics = QuotaRepository.getMonthlyMetrics();
-    const used = metrics.totalOutboundAttempts;
-    const remainingBudget = Math.max(0, this.internalBudget - used);
     const totalRequests = this.cacheHits + this.cacheMisses;
     const hitRatio = totalRequests > 0 ? Number((this.cacheHits / totalRequests).toFixed(2)) : 1.0;
 
     return {
       monthlyLimit: this.monthlyLimit,
       internalBudget: this.internalBudget,
-      usedThisMonth: used,
-      remainingBudget,
+      usedThisMonth: 0, // Actual provider requests made by this application must remain zero
+      actualOutboundCalls: 0,
+      mockProviderCalls: this.mockRequestCount,
+      providerAccessDisabled: true,
+      remainingBudget: this.internalBudget,
       emergencyBuffer: this.emergencyBuffer,
-      liveCallsEnabled: this.isLiveApiEnabled(),
-      demoMode: this.isDemoMode(),
+      liveCallsEnabled: false,
+      demoMode: true,
+      apiKeyConfigured: false,
       resetDate: this.getNextResetDate(),
       cacheHitRatio: hitRatio,
       totalCacheHits: this.cacheHits,
-      totalCacheMisses: this.cacheMisses
+      totalCacheMisses: this.cacheMisses,
+      providerRemainingQuota: undefined // Do not fabricate
     };
   }
 
   /**
-   * Pre-flight policy check before making ANY outbound call to RailRadar
+   * Pre-flight policy check before making ANY outbound call.
+   * In offline demo mode, this ALWAYS refuses outbound requests to guarantee 0 external calls.
    */
   public verifyOutboundPermission(endpointId: string): { allowed: boolean; reason?: string; status: QuotaStatus } {
     const status = this.getQuotaStatus();
-
-    // Rule 1: Refuse if demo mode is active
-    if (this.isDemoMode()) {
-      return {
-        allowed: false,
-        reason: 'DEMO_MODE is active. RailSync is configured to serve deterministic local mock data to protect quota.',
-        status
-      };
-    }
-
-    // Rule 2: Refuse if live API is disabled
-    if (!this.isLiveApiEnabled()) {
-      return {
-        allowed: false,
-        reason: 'LIVE_API_ENABLED is false. Explicit administrative enablement is required before outbound requests.',
-        status
-      };
-    }
-
-    // Rule 3: Refuse if no API key is set
-    const apiKey = process.env.RAILRADAR_API_KEY;
-    if (!apiKey || apiKey.trim() === '' || apiKey === 'YOUR_RAILRADAR_API_KEY') {
-      return {
-        allowed: false,
-        reason: 'RAILRADAR_API_KEY is not configured in backend environment.',
-        status
-      };
-    }
-
-    // Rule 4: Verify internal monthly budget
-    if (status.usedThisMonth >= this.internalBudget) {
-      return {
-        allowed: false,
-        reason: `Monthly safe budget (${this.internalBudget} requests) exhausted. ${this.emergencyBuffer} requests held in emergency buffer.`,
-        status
-      };
-    }
-
-    // Rule 5: Verify endpoint exists in registry
-    const registryEntry = API_REGISTRY.find(e => e.id === endpointId);
-    if (!registryEntry) {
-      return {
-        allowed: false,
-        reason: `Endpoint ID "${endpointId}" is not cataloged in official API registry. Outbound call rejected.`,
-        status
-      };
-    }
-
-    return { allowed: true, status };
+    return {
+      allowed: false,
+      reason: 'DEMO_MODE is active. RailSync is configured to serve deterministic local mock data to protect quota.',
+      status
+    };
   }
 
-  /**
-   * Get cached data if valid and unexpired
-   */
-  public getCached<T>(key: string): { hit: boolean; data?: T; cachedAt?: string; ttlRemainingSec?: number } {
+  // --- In-Memory TTL Cache ---
+  public getCached<T>(key: string): { hit: boolean; data?: T; ttlRemainingSec?: number } {
     const item = this.cache.get(key);
     if (!item) {
       this.cacheMisses++;
@@ -159,25 +148,23 @@ export class QuotaCacheManager {
     }
 
     this.cacheHits++;
-    const ttlRemainingSec = Math.max(0, Math.round((item.expiresAt - now) / 1000));
-    return {
-      hit: true,
-      data: item.data as T,
-      cachedAt: item.cachedAt,
-      ttlRemainingSec
-    };
+    const ttlRemainingSec = Math.max(0, Math.floor((item.expiresAt - now) / 1000));
+    return { hit: true, data: item.data as T, ttlRemainingSec };
   }
 
-  /**
-   * Store data in TTL cache
-   */
   public setCached<T>(key: string, data: T, ttlSeconds: number) {
     const now = Date.now();
     this.cache.set(key, {
       data,
-      cachedAt: new Date().toISOString(),
-      expiresAt: now + ttlSeconds * 1000
+      cachedAt: new Date(now).toISOString(),
+      expiresAt: now + (ttlSeconds * 1000)
     });
+  }
+
+  public clearCache() {
+    this.cache.clear();
+    this.cacheHits = 0;
+    this.cacheMisses = 0;
   }
 
   /**
@@ -185,7 +172,6 @@ export class QuotaCacheManager {
    */
   public async executeWithDeduplication<T>(key: string, fn: () => Promise<T>): Promise<T> {
     if (this.inFlightRequests.has(key)) {
-      // In-flight identical request found! Await existing promise
       return this.inFlightRequests.get(key) as Promise<T>;
     }
 
@@ -198,9 +184,10 @@ export class QuotaCacheManager {
   }
 
   /**
-   * Audit log outbound attempts
+   * Audit log outbound attempts (kept for mock / simulated calls)
    */
   public recordOutboundLog(endpointId: string, endpointPath: string, queryId: string, responseStatus: number, durationMs: number) {
+    this.recentOutboundTimestamps.push(Date.now());
     QuotaRepository.logRequest({
       endpointId,
       endpointPath,
